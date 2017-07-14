@@ -1,9 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { StoreModule } from '@ngrx/store';
 
 import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
 import { NavbarComponent } from './navbar/navbar.component';
+
+import { referencesReducer } from './reducers/references';
+import { uiReducer } from './reducers/ui';
 
 @NgModule({
   declarations: [
@@ -12,7 +16,11 @@ import { NavbarComponent } from './navbar/navbar.component';
     NavbarComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    StoreModule.provideStore({
+      referencesReducer,
+      uiReducer,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
