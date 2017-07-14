@@ -1,0 +1,30 @@
+.landing  {
+    margin: 0 auto;
+    text-align: center;
+    float: none;
+}
+
+.landing-background {
+    background-image: url(http://res.cloudinary.com/dk85nueap/image/upload/v1496896335/patrik-gothe-444_lhb0z0.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: 50px;
+}
+
+.landing ul {
+    list-style: none;
+    list-style-position: outside;
+    text-indent: -8px;
+    max-width: 500px;
+    margin: 0 auto 25px auto;
+}
+
+.landing li {
+    text-align: left;
+}
+
+.landing li:before {
+    content: '\f0da';
+    font-family: FontAwesome;
+    padding-right: 4px;
+}
