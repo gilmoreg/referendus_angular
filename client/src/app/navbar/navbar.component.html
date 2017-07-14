@@ -14,7 +14,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="navbar-collapse-1">
       <app-nav-auth></app-nav-auth>
-      <app-nav-controls *ngIf="loggedIn$"></app-nav-controls>
+      <app-nav-controls *ngIf="loggedIn$ | async"></app-nav-controls>
     </div>
   </div>
 </nav>
