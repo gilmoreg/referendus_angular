@@ -5,6 +5,12 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 const { PORT, DATABASE_URL } = require('./config');
+const db = mongoose.createConnection(DATABASE_URL, { useMongoClient: true });
+db.on('error', err => console.error(err));
+db.once('open', () => {
+  console.info(`Connected to Mongo at: ${new Date()}`)
+});
+
 // const { router } = require('./routes');
 
 const app = express();
@@ -13,7 +19,7 @@ let server;
 
 // Help locate unhandled Promise rejections
 process.on('unhandledRejection', (reason, p) => {
-  console.log('Unhandled Rejection at: Promise', p, 'reason:', reason);
+  console.error('Unhandled Rejection at: Promise', p, 'reason:', reason);
 });
 
 // Middleware
@@ -27,7 +33,7 @@ app.use(cors({
 app.use(compression({ level: 9, threshold: 0 }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(express.static('../client')); after we figure out where Angular's build output is
+app.use(express.static('../client/dist'));
 // app.use(router);
 
 // Log all requests
@@ -45,33 +51,27 @@ app.use((err, req, res) => {
 const runServer = (databaseUrl = DATABASE_URL, port = PORT) =>
   new Promise((resolve, reject) => {
     /* eslint-disable consistent-return */
-    mongoose.connect(databaseUrl, (err) => {
-      if (err) {
-        return reject(err);
-      }
-      server = app.listen(port, () => {
-        console.info(`Your app is listening on port ${port}`);
-        resolve();
-      })
-      .on('error', () => {
-        mongoose.disconnect();
-        reject();
-      });
+    server = app.listen(port, () => {
+      console.info(`Your app is listening on port ${port}`);
+      resolve();
+    })
+    .on('error', (err) => {
+      console.error(err);
+      closeServer();
+      reject();
     });
   });
 
 const closeServer = () =>
-  mongoose.disconnect().then(() =>
+  db.close(() => {
     new Promise((resolve, reject) => {
       console.log('Closing server');
       server.close((err) => {
-        if (err) {
-          return reject(err);
-        }
+        if (err) return reject(err);
         resolve();
       });
-    }),
-  );
+    });
+  });   
 
 if (require.main === module) {
   runServer().catch(err => console.error(err));

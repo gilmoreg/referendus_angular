@@ -4,9 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"npm run server \"  \"npm run client\" ",
-    "server": "cd server && nodemon server.js",
-    "client": "cd client && ng serve",
+    "dev": "concurrently \"npm run devbuild\" \"nodemon server/server.js\" ",
+    "devbuild": "cd client && ng build --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
