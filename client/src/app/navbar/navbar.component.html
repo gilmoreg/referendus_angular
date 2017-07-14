@@ -1,0 +1,75 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Referendus</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-collapse-1">
+    <ul class="nav navbar-nav navbar-right" title="Sign in or out">
+        <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-o" aria-hidden="true"></i><span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            <li>
+                <div id="login-dropdown">
+                    <div class="col-md-12">
+                        <form class="form" role="form" method="post" action="auth/login" accept-charset="UTF-8" id="login-nav">
+                            <div class="form-group">
+                                    <label class="sr-only" for="username">Username</label>
+                                    <input type="text" class="form-control" id="username" placeholder="Username" required>
+                            </div>
+                            <div class="form-group">
+                                    <label class="sr-only" for="password">Password</label>
+                                    <input type="password" class="form-control" id="password" placeholder="Password" required>
+                            </div>
+                            <div class="form-group">
+                                    <div class="signin-message"></div>
+                                    <button class="btn btn-primary btn-block">Sign In</button>
+                                    <button class="btn btn-success btn-block" id="signup">Sign Up</button>
+                            </div>
+                        </form>
+                        <div class="form-group" id="logout">
+                            <button class="btn btn-primary btn-block" id="signout">Sign Out</button>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        </li>
+    </ul>
+    <!-- Format -->
+    <ul class="nav navbar-nav navbar-right logged-in" style="display: none;">
+        <li class="dropdown" title="Select Format">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Format <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            <li id="APA"><a href="#"><i class="fa fa-check" id="apa-check" aria-hidden="true"></i>APA</a></li>
+            <li id="Chicago"><a href="#"><i class="fa fa-check" id="chi-check" aria-hidden="true"></i>Chicago/Turabian</a></li>
+            <li id="MLA"><a href="#"><i class="fa fa-check" id="mla-check" aria-hidden="true"></i>MLA</a></li>
+        </ul>
+        </li>
+    </ul>
+    <!-- Copy -->
+    <ul class="navbar-form navbar-right logged-in" style="display: none;">
+        <button type="button" class="btn btn-warning" id="copy" title="Copy to Clipboard"><i class="fa fa-clipboard" aria-hidden="true"></i></button> 
+    </ul>
+    <!-- Search -->
+    <form class="navbar-form navbar-right logged-in" style="display: none;" role="search" id="nav-search">
+        <div class="form-group">
+              <input type="text" class="form-control" id="tag-search" placeholder="Tag Search" title="Tag Search">
+        </div>
+        <button type="submit" class="btn btn-secondary" id="tag-search-btn" title="Search Tags"><i class="fa fa-search" aria-hidden="true"></i></button>
+    </form>
+    <!-- New -->
+    <ul class="navbar-form navbar-right logged-in" style="display: none;">
+            <button type="button" class="btn btn-success" id="newRef" title="Add New Reference"><i class="fa fa-plus" aria-hidden="true"></i></button> 
+    </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
