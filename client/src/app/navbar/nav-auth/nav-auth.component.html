@@ -7,7 +7,7 @@
       <li>
         <div id="login-dropdown">
           <div class="col-md-12">
-            <form class="form" role="form" method="post" action="auth/login" accept-charset="UTF-8" id="login-nav">
+            <form *ngIf="!(loggedIn$ | async)" class="form" role="form" method="post" action="auth/login" accept-charset="UTF-8" id="login-nav">
               <div class="form-group">
                 <label class="sr-only" for="username">Username</label>
                 <input type="text" class="form-control" id="username" placeholder="Username" required>
@@ -22,7 +22,7 @@
                 <button class="btn btn-success btn-block" id="signup">Sign Up</button>
               </div>
             </form>
-            <div class="form-group" id="logout">
+            <div *ngIf="loggedIn$ | async" class="form-group" id="logout">
               <button class="btn btn-primary btn-block" id="signout">Sign Out</button>
             </div>
           </div>
