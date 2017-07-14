@@ -8,12 +8,16 @@ import { NavbarComponent } from './navbar/navbar.component';
 
 import { referencesReducer } from './reducers/references';
 import { uiReducer } from './reducers/ui';
+import { NavControlsComponent } from './navbar/nav-controls/nav-controls.component';
+import { NavAuthComponent } from './navbar/nav-auth/nav-auth.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingComponent,
-    NavbarComponent
+    NavbarComponent,
+    NavControlsComponent,
+    NavAuthComponent
   ],
   imports: [
     BrowserModule,

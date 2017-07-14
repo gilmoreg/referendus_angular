@@ -1,0 +1,33 @@
+<ul class="nav navbar-nav navbar-right" title="Sign in or out">
+  <li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+        <i class="fa fa-user-o" aria-hidden="true"></i><span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <div id="login-dropdown">
+          <div class="col-md-12">
+            <form class="form" role="form" method="post" action="auth/login" accept-charset="UTF-8" id="login-nav">
+              <div class="form-group">
+                <label class="sr-only" for="username">Username</label>
+                <input type="text" class="form-control" id="username" placeholder="Username" required>
+              </div>
+              <div class="form-group">
+                <label class="sr-only" for="password">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Password" required>
+              </div>
+              <div class="form-group">
+                <div class="signin-message"></div>
+                <button class="btn btn-primary btn-block">Sign In</button>
+                <button class="btn btn-success btn-block" id="signup">Sign Up</button>
+              </div>
+            </form>
+            <div class="form-group" id="logout">
+              <button class="btn btn-primary btn-block" id="signout">Sign Out</button>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
