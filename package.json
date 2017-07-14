@@ -1,0 +1,25 @@
+{
+  "name": "referendus_angular",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm run server \"  \"npm run client\" ",
+    "server": "cd server && nodemon index.js",
+    "client": "cd client && ng serve",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gilmoreg/referendus_angular.git"
+  },
+  "author": "Grayson Gilmore (gilmoreg@live.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gilmoreg/referendus_angular/issues"
+  },
+  "homepage": "https://github.com/gilmoreg/referendus_angular#readme",
+  "devDependencies": {
+    "concurrently": "^3.5.0"
+  }
+}
