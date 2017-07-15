@@ -2,14 +2,19 @@ const bodyParser = require('body-parser');
 const compression = require('compression');
 const cors = require('cors');
 const express = require('express');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
+const passport = require('passport');
 const path = require('path');
-
 const { PORT, DATABASE_URL } = require('./config');
+require('dotenv').config({ path: 'variables.env' });
+require('./handlers/passport');
+
 const db = mongoose.createConnection(DATABASE_URL, { useMongoClient: true });
 db.on('error', err => console.error(err));
 db.once('open', () => {
-  console.info(`Connected to Mongo at: ${new Date()}`)
+  console.info(`Connected to Mongo at: ${new Date()}`);
 });
 
 // const { router } = require('./routes');
@@ -34,6 +39,16 @@ app.use(cors({
 app.use(compression({ level: 9, threshold: 0 }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(session({
+  secret: process.env.SECRET,
+  key: process.env.KEY,
+  resave: false,
+  saveUninitialized: false,
+  store: new MongoStore({ mongooseConnection: mongoose.connection }),
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use('/', express.static(path.join(__dirname, '../client/dist')));
 // app.use(router);
 
