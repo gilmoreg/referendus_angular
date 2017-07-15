@@ -18,9 +18,11 @@ const isAuthenticated = (req, res, next) => {
 };
 
 // Authentication
-router.get('/login', authController.login);
+router.post('/login', authController.login, authController.loginSuccess);
 router.get('/logout', authController.logout);
-router.post('/signup', authController.signup, authController.login);
+router.post('/signup', authController.signup);
 
 // References
 router.get('/refs', isAuthenticated, catchErrors(refController.getRefs));
+
+module.exports = router;

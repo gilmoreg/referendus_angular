@@ -1,12 +1,10 @@
 const passport = require('passport');
-const promisify = require('es6-promisify');
-
 const User = require('../models/User');
 
-exports.login = passport.authenticate('local', {
-  failureRedirect: '/login',
-  successRedirect: '/',
-});
+exports.login = passport.authenticate('local');
+exports.loginSuccess = (req, res) => {
+  res.status(200).json({ message: 'Login successful', user: req.user.username });
+};
 
 exports.logout = (req, res) => {
   req.logout();
@@ -20,7 +18,11 @@ exports.check = (req, res, next) => {
 
 exports.signup = async (req, res, next) => {
   const user = new User({ username: req.body.username });
-  const register = promisify(User.register, User);
-  await register(user, req.body.password);
-  next();
+  try {
+    await User.registerAsync(user, req.body.password);
+    res.status(200).json({ username: req.body.username });
+  } catch (error) {
+    console.log('error registering', error);
+    res.status(500).json({ error });
+  }
 };

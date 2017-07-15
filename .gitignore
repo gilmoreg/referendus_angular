@@ -3,4 +3,3 @@ node_modules/
 .env
 notes
 client/dist
-server/variables.env

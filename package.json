@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently \"npm run devbuild\" \"nodemon server/server.js\" ",
+    "dev": "concurrently \"npm run devbuild\" \"nodemon --inspect server/server.js\" ",
     "devbuild": "cd client && ng build --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -23,6 +23,7 @@
     "body-parser": "^1.16.0",
     "compression": "^1.6.2",
     "connect-mongo": "^1.3.2",
+    "cookie-parser": "^1.4.3",
     "cors": "^2.8.4",
     "dotenv": "^4.0.0",
     "es6-promisify": "^5.0.0",
