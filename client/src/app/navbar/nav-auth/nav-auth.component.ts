@@ -16,4 +16,20 @@ export class NavAuthComponent implements OnInit {
     this.loggedIn$ = this.store.select('loggedIn');
   }
 
+  login(event, username:string, password:string) {
+    event.preventDefault();
+    console.log('login', username, password);
+    // this.store.dispatch({ type: 'LOGIN', payload: f.value });
+  }
+
+  signup(event) {
+    event.preventDefault();
+    console.log('signup', event);
+  }
+
+  signout(event) {
+    event.preventDefault();
+    console.log('signout', event);
+  }
+
 }
