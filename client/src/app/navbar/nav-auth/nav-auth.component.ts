@@ -18,18 +18,16 @@ export class NavAuthComponent implements OnInit {
 
   login(event, username:string, password:string) {
     event.preventDefault();
-    console.log('login', username, password);
-    // this.store.dispatch({ type: 'LOGIN', payload: f.value });
+    this.store.dispatch({ type: 'LOGIN', payload: { username, password }});
   }
 
-  signup(event) {
+  signup(event, username:string, password:string) {
     event.preventDefault();
-    console.log('signup', event);
+    this.store.dispatch({ type: 'SIGNUP', payload: { username, password }})
   }
 
   signout(event) {
     event.preventDefault();
-    console.log('signout', event);
+    this.store.dispatch({ type: 'SIGNOUT' });
   }
-
 }

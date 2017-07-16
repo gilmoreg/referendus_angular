@@ -5,6 +5,8 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpModule } from "@angular/http";
 
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
 import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -30,6 +32,9 @@ import { NavAuthComponent } from './navbar/nav-auth/nav-auth.component';
     StoreModule.provideStore({
       referencesReducer,
       uiReducer,
+    }),
+    StoreDevtoolsModule.instrumentOnlyWithExtension({
+      maxAge: 5
     }),
     EffectsModule.run(APIEffects),
     HttpModule,

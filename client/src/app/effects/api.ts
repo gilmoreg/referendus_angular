@@ -9,8 +9,21 @@ export class APIEffects {
   
   @Effect() login$ = this.action$
     .ofType('LOGIN')
-    .map(action => JSON.stringify(action.payload))
+    .map(action => action.payload)
     .switchMap(payload => this.http.post('/login', payload))
     .map(res => ({ type: 'LOGIN_SUCCESS', payload: res.json() }))
     .catch(() => Observable.of({ type: 'LOGIN_FAILED' }));
+
+  @Effect() signup$ = this.action$
+    .ofType('SIGNUP')
+    .map(action => action.payload)
+    .switchMap(payload => this.http.post('/signup', payload))
+    .map(res => ({ type: 'SIGNUP_SUCCESS', payload: res.json() }))
+    .catch(() => Observable.of({ type: 'SIGNUP_FAILED' }));
+
+  @Effect() logout$ = this.action$
+    .ofType('SIGNOUT')
+    .switchMap(payload => this.http.get('/signout'))
+    .map(res => ({ type: 'LOGOUT' }));
+    // .catch(() => Observable.of({ type: 'LOGOUT_FAILED' }));
 }
