@@ -22,8 +22,8 @@ export class APIEffects {
     .catch(() => Observable.of({ type: 'SIGNUP_FAILED' }));
 
   @Effect() logout$ = this.action$
-    .ofType('SIGNOUT')
-    .switchMap(payload => this.http.get('/signout'))
-    .map(res => ({ type: 'LOGOUT' }));
+    .ofType('LOGOUT')
+    .switchMap(payload => this.http.get('/logout'))
+    .map(res => ({ type: 'LOGOUT_COMPLETE' }));
     // .catch(() => Observable.of({ type: 'LOGOUT_FAILED' }));
 }

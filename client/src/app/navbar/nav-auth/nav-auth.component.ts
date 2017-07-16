@@ -10,10 +10,10 @@ import { Store } from '@ngrx/store';
 export class NavAuthComponent implements OnInit {
   loggedIn$: Observable<boolean>;
 
-  constructor(private store: Store<any>) { }
+  constructor(private store: Store<any>) {}
 
   ngOnInit() {
-    this.loggedIn$ = this.store.select('loggedIn');
+    this.loggedIn$ = this.store.select(state => state.uiReducer.loggedIn);
   }
 
   login(event, username:string, password:string) {
@@ -28,6 +28,6 @@ export class NavAuthComponent implements OnInit {
 
   signout(event) {
     event.preventDefault();
-    this.store.dispatch({ type: 'SIGNOUT' });
+    this.store.dispatch({ type: 'LOGOUT' });
   }
 }

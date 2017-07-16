@@ -30,7 +30,7 @@ import { NavAuthComponent } from './navbar/nav-auth/nav-auth.component';
     BrowserModule,
     FormsModule,
     StoreModule.provideStore({
-      referencesReducer,
+      // referencesReducer,
       uiReducer,
     }),
     StoreDevtoolsModule.instrumentOnlyWithExtension({
