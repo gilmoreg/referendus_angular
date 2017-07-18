@@ -16,7 +16,7 @@ exports.check = (req, res, next) => {
   return res.redirect('/');
 };
 
-exports.signup = async (req, res, next) => {
+exports.signup = async (req, res) => {
   const user = new User({ username: req.body.username });
   try {
     await User.registerAsync(user, req.body.password);
