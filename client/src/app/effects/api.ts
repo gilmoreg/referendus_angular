@@ -18,8 +18,8 @@ export class APIEffects {
     .ofType('SIGNUP')
     .map(action => action.payload)
     .switchMap(payload => this.http.post('/signup', payload))
-    .map(res => ({ type: 'SIGNUP_SUCCESS', payload: res.json() }))
-    .catch(() => Observable.of({ type: 'SIGNUP_FAILED' }));
+    .map(res => ({ type: 'LOGIN_SUCCESS', payload: res.json() }))
+    // .catch(() => Observable.of({ type: 'SIGNUP_FAILED' }));
 
   @Effect() logout$ = this.action$
     .ofType('LOGOUT')
