@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-landing',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingComponent implements OnInit {
 
-  constructor() { }
+  constructor(private store: Store<any>) {}
 
   ngOnInit() {
+  }
+
+  demologin(event) {
+    event.preventDefault();
+    this.store.dispatch({ type: 'LOGIN', payload: { username: 'demo', password: 'demo' }});
   }
 
 }
