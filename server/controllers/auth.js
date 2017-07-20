@@ -2,8 +2,9 @@ const passport = require('passport');
 const User = require('../models/User');
 
 exports.login = passport.authenticate('local');
-exports.loginSuccess = (req, res) => {
-  res.status(200).json({ message: 'Login successful', user: req.user.username });
+
+exports.loginStatus = (req, res) => {
+  if (req.user) res.status(200).json({ message: 'Login successful', user: req.user.username });
 };
 
 exports.logout = (req, res) => {

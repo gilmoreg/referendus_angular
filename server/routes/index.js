@@ -18,7 +18,7 @@ const isAuthenticated = (req, res, next) => {
 };
 
 // Authentication
-router.post('/login', authController.login, authController.loginSuccess);
+router.post('/login', authController.login, authController.loginStatus);
 router.get('/logout', authController.logout);
 router.post('/signup', authController.signup);
 
