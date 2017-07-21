@@ -61,14 +61,36 @@ describe('API Integration Tests', () => {
     chai.request.agent(app)
       .post('/signup')
       .send({ username: 'test', password: 'test' })
-      /* .then((res) => {
-        console.log('repeat', res.text);
-        done();
-      })*/
       .catch((err) => {
         expect(err.status).toEqual(500);
         expect(err.message).toEqual('Internal Server Error');
         expect(err.response.body).toMatchSnapshot();
+        done();
+      });
+  });
+
+  it('check should verify the user is logged in', async (done) => {
+    await chai.request(app)
+      .post('/login')
+      .send({ username: 'test', password: 'test' });
+    chai.request.agent(app)
+      .get('/check')
+      .set('Cookie', sid)
+      .send()
+      .then((res) => {
+        expect(res.status).toEqual(200);
+        expect(res.body).toMatchSnapshot();
+        done();
+      });
+  });
+
+  it('check should verify the user is not logged in', (done) => {
+    chai.request.agent(app)
+      .get('/check')
+      .send()
+      .then((res) => {
+        expect(res.status).toEqual(200);
+        expect(res.body).toMatchSnapshot();
         done();
       });
   });

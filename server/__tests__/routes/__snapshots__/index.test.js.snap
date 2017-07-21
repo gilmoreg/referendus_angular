@@ -1,5 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`API Integration Tests check should verify the user is logged in 1`] = `
+Object {
+  "message": "Logged in",
+  "user": "test",
+}
+`;
+
+exports[`API Integration Tests check should verify the user is not logged in 1`] = `
+Object {
+  "message": "Not logged in",
+}
+`;
+
 exports[`API Integration Tests should throw an error if user already exists 1`] = `
 Object {
   "error": Object {

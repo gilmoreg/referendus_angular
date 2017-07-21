@@ -12,9 +12,9 @@ exports.logout = (req, res) => {
   res.redirect('/');
 };
 
-exports.check = (req, res, next) => {
-  if (req.isAuthenticated()) return next();
-  return res.redirect('/');
+exports.check = (req, res) => {
+  if (req.isAuthenticated()) return res.status(200).json({ message: 'Logged in', user: req.user.username });
+  return res.status(200).json({ message: 'Not logged in' });
 };
 
 exports.signup = async (req, res) => {

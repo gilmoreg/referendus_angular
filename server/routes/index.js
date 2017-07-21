@@ -21,6 +21,7 @@ const isAuthenticated = (req, res, next) => {
 router.post('/login', authController.login, authController.loginStatus);
 router.get('/logout', authController.logout);
 router.post('/signup', authController.signup);
+router.get('/check', authController.check);
 
 // References
 router.get('/refs', isAuthenticated, catchErrors(refController.getRefs));
