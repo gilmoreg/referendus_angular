@@ -7,7 +7,8 @@
     "dev": "concurrently \"npm run devbuild\" \"nodemon --inspect server/server.js\" ",
     "devbuild": "cd client && ng build --watch",
     "test": "jest --runInBand --forceExit",
-    "devtest": "jest --runInBand --forceExit --watch"
+    "devtest": "jest --runInBand --forceExit --watch",
+    "coverage": "jest --coverage"
   },
   "repository": {
     "type": "git",

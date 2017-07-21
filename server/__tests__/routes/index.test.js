@@ -32,6 +32,7 @@ describe('API Integration Tests', () => {
     done();
   });
 
+  // Passport authentication
   it('should log a valid user in', async (done) => {
     const res = await chai.request(app)
       .post('/login')
@@ -50,4 +51,14 @@ describe('API Integration Tests', () => {
         done();
       });
   });
+
+  it('should log out', async (done) => {
+    const res = await chai.request(app)
+      .get('/logout');
+    expect(res.status).toEqual(200);
+    done();
+  });
+
+  // Formatter
+
 });
