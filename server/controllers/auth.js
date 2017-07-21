@@ -21,7 +21,12 @@ exports.signup = async (req, res) => {
   const user = new User({ username: req.body.username });
   try {
     await User.registerAsync(user, req.body.password);
-    res.status(200).json({ username: req.body.username });
+    req.login(user, (err) => {
+      if (!err) {
+        return res.status(200).json({ message: 'Signup successful', user: req.user.username });
+      }
+      throw new Error(`${err}`);
+    });
   } catch (error) {
     console.log('error registering', error);
     res.status(500).json({ error });

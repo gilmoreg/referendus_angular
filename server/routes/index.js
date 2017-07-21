@@ -14,7 +14,7 @@ const isAuthenticated = (req, res, next) => {
   if (req.isAuthenticated()) {
     return next();
   }
-  return res.redirect('/');
+  return res.status(401).json({ error: 'Not logged in' });
 };
 
 // Authentication

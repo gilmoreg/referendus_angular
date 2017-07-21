@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`API Integration Tests should throw an error if user already exists 1`] = `
+Object {
+  "error": Object {
+    "message": "A user with the given username is already registered",
+    "name": "UserExistsError",
+  },
+}
+`;
