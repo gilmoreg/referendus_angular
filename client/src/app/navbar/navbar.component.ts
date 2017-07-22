@@ -15,7 +15,7 @@ export class NavbarComponent implements OnInit {
   constructor(private store: Store<any>) { }
 
   ngOnInit() {
-    this.loggedIn$ = this.store.select('loggedIn');
+    this.loggedIn$ = this.store.select(state => state.uiReducer.loggedIn);
   }
 
   login() {
