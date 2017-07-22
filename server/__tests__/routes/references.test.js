@@ -99,10 +99,6 @@ describe('References tests', () => {
     done();
   });
 
-  /*
-    router.put('/refs/edit/:id', isAuthenticated, catchErrors(refController.editRef));
-    router.delete('/refs/delete/:id', isAuthenticated, catchErrors(refController.deleteRef));
-  */
   it('editRef should successfully edit a ref', async (done) => {
     const website = helpers.generateWebsiteData();
     const ref = await chai.request.agent(app)
