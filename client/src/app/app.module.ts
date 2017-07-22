@@ -19,6 +19,9 @@ import { NavControlsComponent } from './navbar/nav-controls/nav-controls.compone
 import { NavAuthComponent } from './navbar/nav-auth/nav-auth.component';
 import { MainComponent } from './main/main.component';
 import { InstructionsComponent } from './main/instructions/instructions.component';
+import { ArticleComponent } from './main/new-forms/src/app/main/new-forms/article/article.component';
+import { BookComponent } from './main/new-forms/src/app/main/new-forms/book/book.component';
+import { WebsiteComponent } from './main/new-forms/src/app/main/new-forms/website/website.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { InstructionsComponent } from './main/instructions/instructions.componen
     NavControlsComponent,
     NavAuthComponent,
     MainComponent,
-    InstructionsComponent
+    InstructionsComponent,
+    ArticleComponent,
+    BookComponent,
+    WebsiteComponent
   ],
   imports: [
     BrowserModule,
