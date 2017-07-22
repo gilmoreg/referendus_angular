@@ -57,7 +57,7 @@ describe('References tests', () => {
   it('getRefs should return refs for apa', async (done) => {
     const article = helpers.generateArticleData();
     await chai.request.agent(app)
-      .post('/refs/create')
+      .post('/refs')
       .set('Cookie', sid)
       .send(article);
     const res = await chai.request.agent(app)
@@ -72,7 +72,7 @@ describe('References tests', () => {
   it('getRefs should return refs for chicago', async (done) => {
     const book = helpers.generateBookData();
     await chai.request.agent(app)
-      .post('/refs/create')
+      .post('/refs')
       .set('Cookie', sid)
       .send(book);
     const res = await chai.request.agent(app)
@@ -87,7 +87,7 @@ describe('References tests', () => {
   it('getRefs should return refs for mla', async (done) => {
     const website = helpers.generateWebsiteData();
     await chai.request.agent(app)
-      .post('/refs/create')
+      .post('/refs')
       .set('Cookie', sid)
       .send(website);
     const res = await chai.request.agent(app)
@@ -103,18 +103,37 @@ describe('References tests', () => {
     router.put('/refs/edit/:id', isAuthenticated, catchErrors(refController.editRef));
     router.delete('/refs/delete/:id', isAuthenticated, catchErrors(refController.deleteRef));
   */
-  it.only('editRef should successfully edit a ref', async (done) => {
+  it('editRef should successfully edit a ref', async (done) => {
     const website = helpers.generateWebsiteData();
     const ref = await chai.request.agent(app)
-      .post('/refs/create')
+      .post('/refs')
       .set('Cookie', sid)
       .send(website);
     const { id } = ref.body;
     const res = await chai.request.agent(app)
-      .put(`/refs/edit/${id}`)
+      .put(`/refs/${id}`)
       .set('Cookie', sid)
       .send({ id, title: 'test' });
     expect(res.body.title).toEqual('test');
+    done();
+  });
+
+  it('deleteRef should successfully delete a ref', async (done) => {
+    const book = helpers.generateBookData();
+    const ref = await chai.request.agent(app)
+      .post('/refs')
+      .set('Cookie', sid)
+      .send(book);
+    const { id } = ref.body;
+    await chai.request.agent(app)
+      .delete(`/refs/${id}`)
+      .set('Cookie', sid)
+      .send();
+    const res = await chai.request.agent(app)
+      .get('/refs?format=apa')
+      .set('Cookie', sid)
+      .send();
+    expect(res.body.length).toEqual(0);
     done();
   });
 });

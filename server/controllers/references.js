@@ -65,7 +65,7 @@ exports.createRef = (req, res) => {
 
 exports.deleteRef = (req, res) => {
   console.log('info', `DELETE ${req.params.id}`);
-  Reference
+  return Reference
     .findOneAndRemove({ _id: req.params.id, user: req.user._doc.username })
     .exec()
     .then(() => res.status(204).end())
