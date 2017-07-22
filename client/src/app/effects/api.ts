@@ -7,6 +7,11 @@ import { Http } from '@angular/http';
 export class APIEffects {
   constructor(private action$: Actions, private http: Http) {}
   
+  @Effect() check$ = this.action$
+    .ofType('CHECK')
+    .switchMap(payload => this.http.get('/check'))
+    .map(res => ({ type: 'LOGIN_SUCCESS', payload: res.json() }));
+
   @Effect() login$ = this.action$
     .ofType('LOGIN')
     .map(action => action.payload)

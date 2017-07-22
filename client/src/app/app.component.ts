@@ -15,5 +15,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.loggedIn$ = this.store.select(state => state.uiReducer.loggedIn);
+    this.store.dispatch({ type: 'CHECK' });
   }
 }
