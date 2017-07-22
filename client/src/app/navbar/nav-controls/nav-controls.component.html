@@ -3,9 +3,9 @@
   <li class="dropdown" title="Select Format">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Format <span class="caret"></span></a>
     <ul class="dropdown-menu">
-      <li id="APA"><a href="#"><i class="fa fa-check" *ngIf="(apaFormat$ | async)" aria-hidden="true"></i>APA</a></li>
-      <li id="Chicago"><a href="#"><i class="fa fa-check" *ngIf="(chicagoFormat$ | async)" aria-hidden="true"></i>Chicago/Turabian</a></li>
-      <li id="MLA"><a href="#"><i class="fa fa-check" *ngIf="(mlaFormat$ | async)" aria-hidden="true"></i>MLA</a></li>
+      <li id="APA"><a href="#" (click)="setAPAFormat()"><i class="fa fa-check" *ngIf="(apaFormat$ | async)" aria-hidden="true"></i>APA</a></li>
+      <li id="Chicago"><a href="#" (click)="setChicagoFormat()"><i class="fa fa-check" *ngIf="(chicagoFormat$ | async)" aria-hidden="true"></i>Chicago/Turabian</a></li>
+      <li id="MLA"><a href="#" (click)="setMLAFormat()"><i class="fa fa-check" *ngIf="(mlaFormat$ | async)" aria-hidden="true"></i>MLA</a></li>
     </ul>
   </li>
 </ul>

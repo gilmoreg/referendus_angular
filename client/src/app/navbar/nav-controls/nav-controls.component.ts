@@ -19,4 +19,17 @@ export class NavControlsComponent implements OnInit {
     this.chicagoFormat$ = this.store.select(state => state.uiReducer.format.chicago);
     this.mlaFormat$ = this.store.select(state => state.uiReducer.format.mla);
   }
+
+  setAPAFormat() {
+    console.log('apa');
+    this.store.dispatch({ type: 'SET_FORMAT', payload: 'apa' });
+  }
+
+  setChicagoFormat() {
+    this.store.dispatch({ type: 'SET_FORMAT', payload: 'chicago' });
+  }
+
+  setMLAFormat() {
+    this.store.dispatch({ type: 'SET_FORMAT', payload: 'mla' });
+  }
 }

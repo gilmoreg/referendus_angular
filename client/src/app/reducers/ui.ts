@@ -42,7 +42,7 @@ export function uiReducer(state:State = initialState, action:Action) {
       format.apa = false;
       format.chicago = false;
       format.mla = false;
-      switch (action.payload.format) {
+      switch (action.payload) {
         case 'apa': format.apa = true; break;
         case 'chicago': format.chicago = true; break;
         case 'mla': format.mla = true; break;
