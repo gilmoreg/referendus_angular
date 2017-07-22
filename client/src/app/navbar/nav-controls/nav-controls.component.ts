@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-nav-controls',
@@ -6,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav-controls.component.css']
 })
 export class NavControlsComponent implements OnInit {
-  constructor() { }
+  apaFormat$: Observable<boolean>;
+  chicagoFormat$: Observable<boolean>;
+  mlaFormat$: Observable<boolean>;
+  
+  constructor(private store: Store<any>) {}
 
   ngOnInit() {
+    this.apaFormat$ = this.store.select(state => state.uiReducer.format.apa);
+    this.chicagoFormat$ = this.store.select(state => state.uiReducer.format.chicago);
+    this.mlaFormat$ = this.store.select(state => state.uiReducer.format.mla);
   }
-
 }
