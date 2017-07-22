@@ -22,6 +22,7 @@ import { InstructionsComponent } from './main/instructions/instructions.componen
 import { ArticleComponent } from './main/new-forms/src/app/main/new-forms/article/article.component';
 import { BookComponent } from './main/new-forms/src/app/main/new-forms/book/book.component';
 import { WebsiteComponent } from './main/new-forms/src/app/main/new-forms/website/website.component';
+import { DeleteConfirmComponent } from './main/src/app/main/delete-confirm/delete-confirm.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { WebsiteComponent } from './main/new-forms/src/app/main/new-forms/websit
     InstructionsComponent,
     ArticleComponent,
     BookComponent,
-    WebsiteComponent
+    WebsiteComponent,
+    DeleteConfirmComponent
   ],
   imports: [
     BrowserModule,
