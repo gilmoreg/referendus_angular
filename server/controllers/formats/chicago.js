@@ -26,7 +26,7 @@ const authorList = (authors) => {
   for (let i = 1; i < authors.length - 1; i += 1) {
     str += `${firstLast(authors[i].author)}, `;
   }
-  str += `and ${firstLast(authors[authors.length].author)}.`;
+  str += `and ${firstLast(authors[authors.length - 1].author)}.`;
   return str;
 };
 

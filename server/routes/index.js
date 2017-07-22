@@ -25,5 +25,8 @@ router.get('/check', authController.check);
 
 // References
 router.get('/refs', isAuthenticated, catchErrors(refController.getRefs));
+router.post('/refs/create', isAuthenticated, catchErrors(refController.createRef));
+router.put('/refs/edit/:id', isAuthenticated, catchErrors(refController.editRef));
+router.delete('/refs/delete/:id', isAuthenticated, catchErrors(refController.deleteRef));
 
 module.exports = router;

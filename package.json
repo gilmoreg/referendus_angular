@@ -8,7 +8,7 @@
     "devbuild": "cd client && ng build --watch",
     "test": "jest --runInBand --forceExit",
     "devtest": "jest --runInBand --forceExit --watch",
-    "coverage": "jest --coverage"
+    "coverage": "jest --coverage --runInBand"
   },
   "repository": {
     "type": "git",

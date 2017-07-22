@@ -57,6 +57,6 @@ refSchema.methods.json = function () { // eslint-disable-line func-names
   return jsonObj;
 };
 
-const References = mongoose.model('Reference', refSchema, 'references');
+const Reference = mongoose.model('Reference', refSchema, 'reference');
 
-module.exports = { References };
+module.exports = { Reference };

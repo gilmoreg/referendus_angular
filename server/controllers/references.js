@@ -1,5 +1,5 @@
 /* eslint-disable no-underscore-dangle */
-const Reference = require('../models/Reference');
+const { Reference } = require('../models/Reference');
 
 const APAFormatter = require('./formats/apa');
 const ChicagoFormatter = require('./formats/chicago');
@@ -72,14 +72,13 @@ exports.deleteRef = (req, res) => {
     .catch(err => new Error(`Error creating reference: ${err}`));
 };
 
-exports.editRef = (req, res) =>  {
+exports.editRef = (req, res, next) => {
   console.log('info', `PUT ${req.body}`);
   if (req.params.id !== req.body.id) {
     const message = `
       Request path id (${req.params.id}) and request body id 
       (${req.body.id}) must match`;
-    console.log('error', message);
-    throw new Error(msg);
+    throw new Error(message);
   }
   const toUpdate = {};
   const updateableFields = [
@@ -93,10 +92,18 @@ exports.editRef = (req, res) =>  {
     }
   });
 
-  Reference
+  return Reference
     // all key/value pairs in toUpdate will be updated -- that's what `$set` does
-    .findOneAndUpdate({ _id: req.params.id, user: req.user._doc.username }, { $set: toUpdate })
-    .exec()
-    .then(() => res.status(204).end())
-    .catch(err => res.status(500).json({ message: `Internal server error${err}` }));
+    .findOneAndUpdate(
+      {
+        _id: req.params.id,
+        user: req.user._doc.username,
+      },
+      { $set: toUpdate },
+      { new: true })
+    .then(ref => res.status(200).json(ref.json()))
+    .catch((err) => {
+      console.log('Error updaing ref', err);
+      return next(new Error(err));
+    });
 };
