@@ -1,3 +1,4 @@
 <app-navbar></app-navbar>
 <div *ngIf="!(loggedIn$ | async)"><app-landing></app-landing></div>
+<div *ngIf="(loggedIn$ | async)"><app-main></app-main></div>
 

@@ -17,6 +17,8 @@ import { APIEffects } from './effects/api';
 
 import { NavControlsComponent } from './navbar/nav-controls/nav-controls.component';
 import { NavAuthComponent } from './navbar/nav-auth/nav-auth.component';
+import { MainComponent } from './main/main.component';
+import { InstructionsComponent } from './main/instructions/instructions.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { NavAuthComponent } from './navbar/nav-auth/nav-auth.component';
     LandingComponent,
     NavbarComponent,
     NavControlsComponent,
-    NavAuthComponent
+    NavAuthComponent,
+    MainComponent,
+    InstructionsComponent
   ],
   imports: [
     BrowserModule,
