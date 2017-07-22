@@ -21,7 +21,6 @@ export class NavControlsComponent implements OnInit {
   }
 
   setAPAFormat() {
-    console.log('apa');
     this.store.dispatch({ type: 'SET_FORMAT', payload: 'apa' });
   }
 

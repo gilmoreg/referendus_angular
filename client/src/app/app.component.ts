@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.loggedIn$ = this.store.select(state => state.uiReducer.loggedIn);
+    // Check if a valid session cookie exists; if so, set state to loggedIn
     this.store.dispatch({ type: 'CHECK' });
   }
 }
