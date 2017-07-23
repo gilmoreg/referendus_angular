@@ -9,7 +9,9 @@ export class APIEffects {
   
   @Effect() check$ = this.action$
     .ofType('CHECK')
-    .switchMap(payload => this.http.get('/check'))
+    .switchMap(payload => {
+      return this.http.get('/check');
+    })
     .map(res => ({ type: 'LOGIN_SUCCESS', payload: res.json() }));
 
   @Effect() login$ = this.action$

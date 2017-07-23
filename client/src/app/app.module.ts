@@ -19,10 +19,10 @@ import { NavControlsComponent } from './navbar/nav-controls/nav-controls.compone
 import { NavAuthComponent } from './navbar/nav-auth/nav-auth.component';
 import { MainComponent } from './main/main.component';
 import { InstructionsComponent } from './main/instructions/instructions.component';
-import { ArticleComponent } from './main/new-forms/src/app/main/new-forms/article/article.component';
-import { BookComponent } from './main/new-forms/src/app/main/new-forms/book/book.component';
-import { WebsiteComponent } from './main/new-forms/src/app/main/new-forms/website/website.component';
-import { DeleteConfirmComponent } from './main/src/app/main/delete-confirm/delete-confirm.component';
+import { ArticleComponent } from './main/new-forms/article/article.component';
+import { BookComponent } from './main/new-forms/book/book.component';
+import { WebsiteComponent } from './main/new-forms/website/website.component';
+import { DeleteConfirmComponent } from './main/delete-confirm/delete-confirm.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +42,7 @@ import { DeleteConfirmComponent } from './main/src/app/main/delete-confirm/delet
     BrowserModule,
     FormsModule,
     StoreModule.provideStore({
-      // referencesReducer,
+      referencesReducer,
       uiReducer,
     }),
     StoreDevtoolsModule.instrumentOnlyWithExtension({
