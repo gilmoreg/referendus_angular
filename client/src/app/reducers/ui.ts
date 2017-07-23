@@ -35,6 +35,8 @@ export function uiReducer(state:State = initialState, action:Action) {
   switch (action.type) {
     case 'CHANGE_TAB': return Object.assign({}, state, { activeTab: action.payload.tab });
     case 'LOGIN_SUCCESS': return Object.assign({}, state, { loggedIn: true });
+    case 'LOGIN_FAILED':
+    case 'SIGNUP_FAILED':
     case 'LOGOUT_COMPLETE': return Object.assign({}, state, { loggedIn: false });
     case 'SET_ACTIVE_SEARCH': return Object.assign({}, state, { currentSearch: action.payload.search });
     case 'SET_FORMAT': {
