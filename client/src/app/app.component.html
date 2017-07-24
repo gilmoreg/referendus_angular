@@ -1,4 +1,8 @@
 <app-navbar></app-navbar>
 <div *ngIf="!(loggedIn$ | async)"><app-landing></app-landing></div>
 <div *ngIf="(loggedIn$ | async)"><app-main></app-main></div>
-
+<footer>
+    <p>Referendus © 2017 by <a href="https://github.com/gilmoreg/" target="_blank">Grayson Gilmore</a>. All rights reserved.</p>
+    <p>Powered by: <a href="http://getbootstrap.com/" target="_blank">Bootstrap</a> and <a href="https://bootswatch.com/sandstone/" target="_blank">Bootswatch Sandstone</a>.</p>
+    <p>Background image by <a href="http://unsplash.com/@p?utm_campaign=photographer-credit" target="_blank">Patrik Göthe</a>.</p>
+</footer>
