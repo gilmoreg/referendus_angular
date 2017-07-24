@@ -1,20 +1,23 @@
+// Modules
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpModule } from "@angular/http";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MdButtonModule, MdMenuModule, MdToolbarModule, MdIconModule, MdInputModule } from '@angular/material';
+
+// State Management
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { HttpModule } from "@angular/http";
-
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-
-import { AppComponent } from './app.component';
-import { LandingComponent } from './landing/landing.component';
-import { NavbarComponent } from './navbar/navbar.component';
-
 import { referencesReducer } from './reducers/references';
 import { uiReducer } from './reducers/ui';
 import { APIEffects } from './effects/api';
 
+// Components
+import { AppComponent } from './app.component';
+import { LandingComponent } from './landing/landing.component';
+import { NavbarComponent } from './navbar/navbar.component';
 import { NavControlsComponent } from './navbar/nav-controls/nav-controls.component';
 import { NavAuthComponent } from './navbar/nav-auth/nav-auth.component';
 import { MainComponent } from './main/main.component';
@@ -54,6 +57,12 @@ import { NewButtonsComponent } from './modals/ref-modal/new-buttons/new-buttons.
     }),
     EffectsModule.run(APIEffects),
     HttpModule,
+    BrowserAnimationsModule,
+    MdButtonModule,
+    MdMenuModule,
+    MdToolbarModule,
+    MdIconModule,
+    MdInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

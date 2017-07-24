@@ -1,4 +1,24 @@
-<ul class="nav navbar-nav navbar-right" title="Sign in or out">
+<div>
+  <form *ngIf="!(loggedIn$ | async)" (submit)="login($event, username.value, password.value)" class="form" accept-charset="UTF-8" id="login-nav">
+    <md-input-container class="">
+      <input mdInput placeholder="Username" value="demo" required>
+    </md-input-container>
+    <md-input-container class="">
+      <input type="password" mdInput placeholder="Password" value="demo" required>
+    </md-input-container>
+
+    <div class="form-group">
+      <div class="signin-message"></div>
+      <button md-button (click)="login($event, username.value, password.value)" class="">Sign In</button>
+      <button md-button (click)="signup($event, username.value, password.value)" class="">Sign Up</button>
+    </div>
+  </form>
+  <div *ngIf="loggedIn$ | async" class="form-group" id="logout">
+    <button class="btn btn-primary btn-block" id="signout" (click)="signout($event)">Sign Out</button>
+  </div>
+</div>
+
+<!-- <ul class="nav navbar-nav navbar-right" title="Sign in or out">
   <li class="dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
         <i class="fa fa-user-o" aria-hidden="true"></i><span class="caret"></span>
@@ -30,4 +50,4 @@
       </li>
     </ul>
   </li>
-</ul>
+</ul> -->
