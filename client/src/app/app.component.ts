@@ -20,7 +20,6 @@ export class AppComponent implements OnInit {
   constructor(private store: Store<any>) {}
 
   syncReferences() {
-    console.log('syncReferences', this.format);
     if (this.isLoggedIn && this.format) this.store.dispatch({ type: 'SYNC', payload: this.format });
   }
 
