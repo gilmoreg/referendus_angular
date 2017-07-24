@@ -23,7 +23,7 @@ const initialState = {
   activeTab:<number> 0,
   activeSearch:<string> '',
   format: {
-    apa:<boolean> true,
+    apa:<boolean> false,
     chicago:<boolean> false,
     mla:<boolean> false,
   },

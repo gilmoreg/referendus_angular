@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
   constructor(private store: Store<any>) {}
 
   syncReferences() {
+    if (this.format) localStorage.setItem('format', this.format);
     if (this.isLoggedIn && this.format) this.store.dispatch({ type: 'SYNC', payload: this.format });
   }
 
@@ -58,6 +59,14 @@ export class AppComponent implements OnInit {
         this.isLoggedIn = false;
       }
     });
+    // Check if a format choice exists in localStorage and set it
+    const lsFormat = localStorage.getItem('format');
+    if (lsFormat) {
+      this.store.dispatch({ type: 'SET_FORMAT', payload: lsFormat });
+    } else {
+      // Otherwise set the default as APA
+      this.store.dispatch({ type: 'SET_FORMAT', payload: 'apa' });
+    }
     // Check if a valid session cookie exists; if so, set state to loggedIn
     this.store.dispatch({ type: 'CHECK' });
   }
