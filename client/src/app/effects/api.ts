@@ -12,7 +12,11 @@ export class APIEffects {
     .switchMap(payload => {
       return this.http.get('/check');
     })
-    .map(res => ({ type: 'LOGIN_SUCCESS', payload: res.json() }))
+    .map(res => {
+      const response = res.json();
+      if (response.message === 'Not logged in') return ({ type: 'LOGIN_FAILED' });
+      return ({ type: 'LOGIN_SUCCESS' });
+    })
     .catch(() => Observable.of({ type: 'LOGIN_FAILED' }));
 
   @Effect() login$ = this.action$
