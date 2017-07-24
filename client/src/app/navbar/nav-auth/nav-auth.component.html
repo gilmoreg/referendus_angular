@@ -1,20 +1,18 @@
 <div>
   <form *ngIf="!(loggedIn$ | async)" (submit)="login($event, username.value, password.value)" class="form" accept-charset="UTF-8" id="login-nav">
-    <md-input-container class="">
-      <input mdInput placeholder="Username" value="demo" required>
+    <md-input-container class="auth-input">
+      <input mdInput #username placeholder="Username" value="demo" required>
     </md-input-container>
     <md-input-container class="">
-      <input type="password" mdInput placeholder="Password" value="demo" required>
+      <input type="password" #password mdInput placeholder="Password" value="demo" required>
     </md-input-container>
-
     <div class="form-group">
-      <div class="signin-message"></div>
-      <button md-button (click)="login($event, username.value, password.value)" class="">Sign In</button>
-      <button md-button (click)="signup($event, username.value, password.value)" class="">Sign Up</button>
+      <button md-raised-button (click)="login($event, username.value, password.value)" class="">Sign In</button>
+      <button md-raised-button (click)="signup($event, username.value, password.value)" class="">Sign Up</button>
     </div>
   </form>
-  <div *ngIf="loggedIn$ | async" class="form-group" id="logout">
-    <button class="btn btn-primary btn-block" id="signout" (click)="signout($event)">Sign Out</button>
+  <div *ngIf="loggedIn$ | async" id="logout">
+    <button md-raised-button (click)="signout($event)">Sign Out</button>
   </div>
 </div>
 

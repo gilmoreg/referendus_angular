@@ -2,7 +2,7 @@
   <span>Referendus</span>
    <span class="example-fill-remaining-space"></span>
    <app-nav-controls *ngIf="loggedIn$ | async"></app-nav-controls>
-   <button md-button [mdMenuTriggerFor]="authMenu">Account</button>
+   <button md-raised-button [mdMenuTriggerFor]="authMenu">Account</button>
 </md-toolbar>
 
 <md-menu #authMenu="mdMenu" yPosition="below">
