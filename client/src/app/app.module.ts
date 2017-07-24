@@ -23,6 +23,8 @@ import { ArticleComponent } from './main/new-forms/article/article.component';
 import { BookComponent } from './main/new-forms/book/book.component';
 import { WebsiteComponent } from './main/new-forms/website/website.component';
 import { DeleteConfirmComponent } from './main/delete-confirm/delete-confirm.component';
+import { RefModalComponent } from './modals/ref-modal/ref-modal.component';
+import { NewButtonsComponent } from './modals/ref-modal/new-buttons/new-buttons.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { DeleteConfirmComponent } from './main/delete-confirm/delete-confirm.com
     ArticleComponent,
     BookComponent,
     WebsiteComponent,
-    DeleteConfirmComponent
+    DeleteConfirmComponent,
+    RefModalComponent,
+    NewButtonsComponent
   ],
   imports: [
     BrowserModule,
