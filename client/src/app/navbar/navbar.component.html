@@ -1,10 +1,28 @@
-<md-toolbar color="primary">
+<md-toolbar color="primary" class="nav-toolbar">
   <span>Referendus</span>
-   <span class="example-fill-remaining-space"></span>
-   <app-nav-controls *ngIf="loggedIn$ | async"></app-nav-controls>
-   <button md-raised-button [mdMenuTriggerFor]="authMenu">Account</button>
+  <span class="example-fill-remaining-space"></span>
+  <button md-raised-button (click)="new()">New</button>
+  <button md-raised-button [mdMenuTriggerFor]="formatMenu">Format</button>
+  <button md-raised-button (click)="copy()">Copy</button>
+  <button md-raised-button [mdMenuTriggerFor]="searchMenu">Search</button>
+  <button md-raised-button [mdMenuTriggerFor]="authMenu">Account</button>
 </md-toolbar>
 
-<md-menu #authMenu="mdMenu" yPosition="below">
+<md-menu #authMenu="mdMenu" yPosition="below" class="nav-menu">
   <app-nav-auth></app-nav-auth>
+</md-menu>
+
+<md-menu #formatMenu="mdMenu" yPosition="below" class="nav-menu">
+  <a md-menu-item routerLink="." (click)="setAPAFormat()"><i class="fa fa-check" *ngIf="(apaFormat$ | async)" aria-hidden="true"></i>APA</a>
+  <a md-menu-item routerLink="." (click)="setChicagoFormat()"><i class="fa fa-check" *ngIf="(chicagoFormat$ | async)" aria-hidden="true"></i>Chicago/Turabian</a>
+  <a md-menu-item routerLink="." (click)="setMLAFormat()"><i class="fa fa-check" *ngIf="(mlaFormat$ | async)" aria-hidden="true"></i>MLA</a>
+</md-menu>
+
+<md-menu #searchMenu="mdMenu" yPosition="below" class="nav-menu">
+  <form mdForm accept-charset="UTF-8" (submit)="search($event, tagsearch.value)">
+    <md-input-container class="tag-search">
+      <input mdInput #tagsearch placeholder="Search tags...">
+    </md-input-container>
+    <button md-raised-button (click)="search($event, tagsearch.value)">Search</button>
+  </form>
 </md-menu>

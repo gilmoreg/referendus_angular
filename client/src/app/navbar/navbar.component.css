@@ -21,3 +21,11 @@
     max-width: 768px;
     margin: 0 auto;
 }
+
+.nav-toolbar button {
+    margin: 0 5px;
+}
+
+.nav-menu {
+    color: white;
+}

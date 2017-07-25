@@ -3,8 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from "@angular/http";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdButtonModule, MdMenuModule, MdToolbarModule, MdIconModule, MdInputModule } from '@angular/material';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 // State Management
 import { StoreModule } from '@ngrx/store';
@@ -57,12 +56,7 @@ import { NewButtonsComponent } from './modals/ref-modal/new-buttons/new-buttons.
     }),
     EffectsModule.run(APIEffects),
     HttpModule,
-    BrowserAnimationsModule,
-    MdButtonModule,
-    MdMenuModule,
-    MdToolbarModule,
-    MdIconModule,
-    MdInputModule
+    NgbModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
