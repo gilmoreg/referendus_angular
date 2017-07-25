@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Http } from '@angular/http';
 
+import { environment } from '../../environments/environment';
+
 @Injectable()
 export class APIEffects {
   constructor(private action$: Actions, private http: Http) {}
@@ -10,7 +12,7 @@ export class APIEffects {
   @Effect() check$ = this.action$
     .ofType('CHECK')
     .switchMap(payload => {
-      return this.http.get('/check');
+      return this.http.get(`${environment.apiURL}/check`);
     })
     .map(res => {
       const response = res.json();
@@ -22,7 +24,7 @@ export class APIEffects {
   @Effect() login$ = this.action$
     .ofType('LOGIN')
     .map(action => action.payload)
-    .switchMap(payload => this.http.post('/login', payload))
+    .switchMap(payload => this.http.post(`${environment.apiURL}/login`, payload))
     .map(res => ({ type: 'LOGIN_SUCCESS', payload: res.json() }))
     .catch(() => Observable.of({ type: 'LOGIN_FAILED' }));
 
@@ -30,19 +32,19 @@ export class APIEffects {
     .ofType('SYNC')
     .map(action => action.payload)
     .switchMap((format) => {
-      return this.http.get(`/refs?format=${format}`);
+      return this.http.get(`${environment.apiURL}/refs?format=${format}`);
     })
     .map(res => ({ type: 'SYNC_REFERENCES_SUCCESS', payload: res.json() }))
 
   @Effect() signup$ = this.action$
     .ofType('SIGNUP')
     .map(action => action.payload)
-    .switchMap(payload => this.http.post('/signup', payload))
+    .switchMap(payload => this.http.post(`${environment.apiURL}/signup`, payload))
     .map(res => ({ type: 'LOGIN_SUCCESS', payload: res.json() }))
     .catch(() => Observable.of({ type: 'SIGNUP_FAILED' }));
 
   @Effect() logout$ = this.action$
     .ofType('LOGOUT')
-    .switchMap(payload => this.http.get('/logout'))
+    .switchMap(payload => this.http.get(`${environment.apiURL}/logout`))
     .map(res => ({ type: 'LOGOUT_COMPLETE' }));
 }

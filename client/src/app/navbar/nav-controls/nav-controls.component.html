@@ -1,3 +1,4 @@
+<!-- Format
 <span><button md-icon-button [mdMenuTriggerFor]="formatMenu">Format</button></span>
 <span><button md-icon-button (click)="copy()">Copy</button></span>
 <form mdForm accept-charset="UTF-8" (submit)="search($event, tagsearch.value)">
@@ -14,7 +15,7 @@
   <a md-button routerLink="." (click)="setMLAFormat()"><i class="fa fa-check" *ngIf="(mlaFormat$ | async)" aria-hidden="true"></i>MLA</a>
 </md-menu>
 
-<!-- Format
+
 <ul class="nav navbar-nav navbar-right logged-in">
   <li class="dropdown" title="Select Format">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Format <span class="caret"></span></a>
