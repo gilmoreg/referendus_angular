@@ -1,0 +1,13 @@
+<form class="navbar-form navbar-right">
+  <ul class="nav navbar-nav navbar-right">
+    <app-nav-auth></app-nav-auth>
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Format <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a routerLink="." (click)="setAPAFormat()"><i class="fa fa-check" *ngIf="(apaFormat$ | async)" aria-hidden="true"></i>APA</a></li>
+        <li><a routerLink="." (click)="setChicagoFormat()"><i class="fa fa-check" *ngIf="(chicagoFormat$ | async)" aria-hidden="true"></i>Chicago/Turabian</a></li>
+        <li><a routerLink="." (click)="setMLAFormat()"><i class="fa fa-check" *ngIf="(mlaFormat$ | async)" aria-hidden="true"></i>MLA</a></li>
+      </ul>
+    </li>
+  </ul>
+</form>

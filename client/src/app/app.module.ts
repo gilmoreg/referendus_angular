@@ -27,6 +27,8 @@ import { WebsiteComponent } from './main/new-forms/website/website.component';
 import { DeleteConfirmComponent } from './main/delete-confirm/delete-confirm.component';
 import { RefModalComponent } from './modals/ref-modal/ref-modal.component';
 import { NewButtonsComponent } from './modals/ref-modal/new-buttons/new-buttons.component';
+import { NavFormatComponent } from './navbar/nav-format/nav-format.component';
+import { NavSearchComponent } from './navbar/nav-search/nav-search.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { NewButtonsComponent } from './modals/ref-modal/new-buttons/new-buttons.
     WebsiteComponent,
     DeleteConfirmComponent,
     RefModalComponent,
-    NewButtonsComponent
+    NewButtonsComponent,
+    NavFormatComponent,
+    NavSearchComponent
   ],
   imports: [
     BrowserModule,

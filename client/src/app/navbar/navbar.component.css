@@ -1,31 +1,10 @@
-.example-fill-remaining-space {
-  flex: 1 1 auto;
-}
-
 .navbar-brand {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 /* Check marks in format dropdown */
 .dropdown-menu i {
-    position: absolute;
-    left: 5px;
-    margin-top: 0.25em;
-}
-
-.navbar-form {
-    padding: 0px 6px;
-}
-
-.nav-tabs {
-    max-width: 768px;
-    margin: 0 auto;
-}
-
-.nav-toolbar button {
-    margin: 0 5px;
-}
-
-.nav-menu {
-    color: white;
+  position: absolute;
+  left: 5px;
+  margin-top: 0.25em;
 }

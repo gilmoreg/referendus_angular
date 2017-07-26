@@ -11,59 +11,13 @@
       <a class="navbar-brand" href="#">Referendus</a>
     </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Copy</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-o" aria-hidden="true"></i><span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li>
-              <div id="login-dropdown">
-                <div class="col-md-12">
-                  <form *ngIf="!(loggedIn$ | async)" (submit)="login($event, username.value, password.value)" class="form" role="form" accept-charset="UTF-8" id="login-nav">
-                    <div class="form-group">
-                      <label class="sr-only" for="username">Username</label>
-                      <input type="text" class="form-control" id="username" placeholder="Username" required>
-                    </div>
-                    <div class="form-group">
-                      <label class="sr-only" for="password">Password</label>
-                      <input type="password" class="form-control" id="password" placeholder="Password" required>
-                    </div>
-                    <div class="form-group">
-                      <div class="signin-message"></div>
-                      <button (click)="login($event, username.value, password.value)" class="btn btn-primary btn-block">Sign In</button>
-                      <button (click)="signup($event, username.value, password.value)" class="btn btn-success btn-block" id="signup">Sign Up</button>
-                    </div>
-                  </form>
-                  <div *ngIf="loggedIn$ | async" class="form-group" id="logout">
-                    <button (click)="signout($event)" class="btn btn-primary btn-block" id="signout">Sign Out</button>
-                  </div>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </li>
+      <app-nav-auth></app-nav-auth>
+      <ul class="nav navbar-nav navbar-right navbar-form">
+        <li><button (click)="copy()" class="btn btn-default">Copy</button></li>
+        <li><button (click)="newRef()" class="btn btn-default">New</button></li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Format <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a routerLink="." (click)="setAPAFormat()"><i class="fa fa-check" *ngIf="(apaFormat$ | async)" aria-hidden="true"></i>APA</a></li>
-            <li><a routerLink="." (click)="setChicagoFormat()"><i class="fa fa-check" *ngIf="(chicagoFormat$ | async)" aria-hidden="true"></i>Chicago/Turabian</a></li>
-            <li><a routerLink="." (click)="setMLAFormat()"><i class="fa fa-check" *ngIf="(mlaFormat$ | async)" aria-hidden="true"></i>MLA</a></li>
-          </ul>
-        </li>
-        <li><a href="#">New</a></li>
-      </ul>
-      <form class="navbar-form navbar-right">
-        <div class="form-group">
-          <div class="input-group input-group-sm">
-            <input type="text" class="form-control" placeholder="Search Tags...">
-          </div>
-        </div>
-        <button type="submit" class="btn btn-default">Search</button>
-      </form>
+      <app-nav-search></app-nav-search>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>

@@ -1,17 +1,59 @@
-<!-- <span>
-  <form *ngIf="!(loggedIn$ | async)" (submit)="login($event, username.value, password.value)" class="form" accept-charset="UTF-8" id="login-nav">
-    <md-input-container class="auth-input">
-      <input mdInput #username placeholder="Username" value="demo" required>
-    </md-input-container>
-    <md-input-container class="">
-      <input type="password" #password mdInput placeholder="Password" value="demo" required>
-    </md-input-container>
-    <div class="form-group">
-      <button md-raised-button (click)="login($event, username.value, password.value)" class="">Sign In</button>
-      <button md-raised-button (click)="signup($event, username.value, password.value)" class="">Sign Up</button>
-    </div>
-  </form>
-  <div *ngIf="loggedIn$ | async" id="logout">
-    <button md-raised-button (click)="signout($event)">Sign Out</button>
-  </div>
-</span> -->
+<div class="btn-group navbar-right navbar-form">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="fa fa-user-o" aria-hidden="true"></i> <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+      <li>
+        <div class="col-md-12">
+          <form *ngIf="!(loggedIn$ | async)" (submit)="login($event, username.value, password.value)" class="form" role="form" accept-charset="UTF-8" id="login-nav">
+            <div class="form-group">
+              <label class="sr-only" for="username">Username</label>
+              <input type="text" class="form-control" id="username" placeholder="Username" required>
+            </div>
+            <div class="form-group">
+              <label class="sr-only" for="password">Password</label>
+              <input type="password" class="form-control" id="password" placeholder="Password" required>
+            </div>
+            <div class="form-group">
+              <div class="signin-message"></div>
+              <button (click)="login($event, username.value, password.value)" class="btn btn-primary btn-block">Sign In</button>
+              <button (click)="signup($event, username.value, password.value)" class="btn btn-success btn-block" id="signup">Sign Up</button>
+            </div>
+          </form>
+          <div *ngIf="loggedIn$ | async" class="form-group" id="logout">
+            <button (click)="signout($event)" class="btn btn-primary btn-block" id="signout">Sign Out</button>
+          </div>
+        </div>
+      </li>
+  </ul>
+</div>
+<!--
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-o" aria-hidden="true"></i><span class="caret"></span></a>
+  <ul class="dropdown-menu">
+    <li>
+      <div id="login-dropdown">
+        <div class="col-md-12">
+          <form *ngIf="!(loggedIn$ | async)" (submit)="login($event, username.value, password.value)" class="form" role="form" accept-charset="UTF-8" id="login-nav">
+            <div class="form-group">
+              <label class="sr-only" for="username">Username</label>
+              <input type="text" class="form-control" id="username" placeholder="Username" required>
+            </div>
+            <div class="form-group">
+              <label class="sr-only" for="password">Password</label>
+              <input type="password" class="form-control" id="password" placeholder="Password" required>
+            </div>
+            <div class="form-group">
+              <div class="signin-message"></div>
+              <button (click)="login($event, username.value, password.value)" class="btn btn-primary btn-block">Sign In</button>
+              <button (click)="signup($event, username.value, password.value)" class="btn btn-success btn-block" id="signup">Sign Up</button>
+            </div>
+          </form>
+          <div *ngIf="loggedIn$ | async" class="form-group" id="logout">
+            <button (click)="signout($event)" class="btn btn-primary btn-block" id="signout">Sign Out</button>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</li> -->
