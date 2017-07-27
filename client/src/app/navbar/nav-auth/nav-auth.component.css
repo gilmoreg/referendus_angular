@@ -1,3 +1,11 @@
+.form-background {
+  background-color: #f8f5f0;
+}
+
 .navbar-form {
   padding-right: 0;
+}
+
+.button-row {
+  display: block;
 }

@@ -9,6 +9,8 @@ import { Store } from '@ngrx/store';
 })
 export class NavAuthComponent implements OnInit {
   loggedIn$: Observable<boolean>;
+  defaultUsername = "demo";
+  defaultPassword = "demo";
 
   constructor(private store: Store<any>) {}
 
@@ -16,8 +18,17 @@ export class NavAuthComponent implements OnInit {
     this.loggedIn$ = this.store.select(state => state.uiReducer.loggedIn);
   }
 
+  onSubmit(submittedForm) {
+    if (submittedForm.invalid) {
+      return;
+    }
+    this.store.dispatch({
+      type: 'LOGIN', payload: submittedForm.value,
+    });
+  }
+
   login(event, username:string, password:string) {
-    event.preventDefault();
+    
     this.store.dispatch({ type: 'LOGIN', payload: { username, password }});
   }
 
