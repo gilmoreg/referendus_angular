@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from "@angular/http";
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 // State Management
 import { StoreModule } from '@ngrx/store';
@@ -62,7 +63,8 @@ import { NavSearchComponent } from './navbar/nav-search/nav-search.component';
     EffectsModule.run(APIEffects),
     HttpModule,
     CollapseModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    BsDropdownModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],
