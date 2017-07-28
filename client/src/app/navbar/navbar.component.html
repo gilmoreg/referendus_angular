@@ -1,6 +1,25 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-primary">
+  <button class="navbar-toggler navbar-toggler-right" type="button" aria-expanded="false" aria-label="Toggle navigation">
+    <a href="#" (click)="isCollapsed = !isCollapsed"><span class="navbar-toggler-icon"></span></a>
+  </button>
+  <a class="navbar-brand" href="#">Referendus</a>
+  <div [collapse]="isCollapsed" id="navControls">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <button (click)="copy()" class="btn btn-default">Copy</button>
+      </li>
+      <li class="nav-item">
+        <button (click)="openModal()" class="btn btn-default">New</button>
+      </li>
+    </ul>
+    <!--<app-nav-search></app-nav-search>
+    <app-nav-format></app-nav-format>
+    <app-nav-auth></app-nav-auth>-->
+  </div>
+</nav>
+
+<!--
   <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
@@ -15,40 +34,33 @@
       <app-nav-auth></app-nav-auth>
       <ul class="nav navbar-nav navbar-right navbar-form">
         <li><button (click)="copy()" class="btn btn-default">Copy</button></li>
-        <li><button (click)="newRef()" class="btn btn-default">New</button></li>
+        <li><button (click)="open(content)" class="btn btn-default">New</button></li>
       </ul>
       <app-nav-search></app-nav-search>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+    </div>
+  </div>
+
+  <ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <app-new-buttons (typeChanged)="changeType($event)"></app-new-buttons>
+          <app-article *ngIf="type==='article'"></app-article>
+          <app-book *ngIf="type==='book'"></app-book>
+          <app-website *ngIf="type==='website'"></app-website>
+        </div>
+        <div class="modal-footer">
+          <div class="form-group submit submit-row">
+            <button type="submit" class="btn btn-warning new-button" name="submitNew">Add</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
 </nav>
-
-<!--
-<md-toolbar color="primary" class="nav-toolbar">
-  <span>Referendus</span>
-  <span class="example-fill-remaining-space"></span>
-  <button md-raised-button (click)="new()">New</button>
-  <button md-raised-button [mdMenuTriggerFor]="formatMenu">Format</button>
-  <button md-raised-button (click)="copy()">Copy</button>
-  <button md-raised-button [mdMenuTriggerFor]="searchMenu">Search</button>
-  <button md-raised-button [mdMenuTriggerFor]="authMenu">Account</button>
-</md-toolbar>
-
-<md-menu #authMenu="mdMenu" yPosition="below" class="nav-menu">
-  <app-nav-auth></app-nav-auth>
-</md-menu>
-
-<md-menu #formatMenu="mdMenu" yPosition="below" class="nav-menu">
-  <a md-menu-item routerLink="." (click)="setAPAFormat()"><i class="fa fa-check" *ngIf="(apaFormat$ | async)" aria-hidden="true"></i>APA</a>
-  <a md-menu-item routerLink="." (click)="setChicagoFormat()"><i class="fa fa-check" *ngIf="(chicagoFormat$ | async)" aria-hidden="true"></i>Chicago/Turabian</a>
-  <a md-menu-item routerLink="." (click)="setMLAFormat()"><i class="fa fa-check" *ngIf="(mlaFormat$ | async)" aria-hidden="true"></i>MLA</a>
-</md-menu>
-
-<md-menu #searchMenu="mdMenu" yPosition="below" class="nav-menu">
-  <form mdForm accept-charset="UTF-8" (submit)="search($event, tagsearch.value)">
-    <md-input-container class="tag-search">
-      <input mdInput #tagsearch placeholder="Search tags...">
-    </md-input-container>
-    <button md-raised-button (click)="search($event, tagsearch.value)">Search</button>
-  </form>
-</md-menu>
 -->

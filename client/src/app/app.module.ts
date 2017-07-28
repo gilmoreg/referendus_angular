@@ -3,7 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from "@angular/http";
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
 
 // State Management
 import { StoreModule } from '@ngrx/store';
@@ -60,9 +61,11 @@ import { NavSearchComponent } from './navbar/nav-search/nav-search.component';
     }),
     EffectsModule.run(APIEffects),
     HttpModule,
-    NgbModule.forRoot()
+    CollapseModule.forRoot(),
+    ModalModule.forRoot()
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ RefModalComponent ],
 })
 export class AppModule { }
