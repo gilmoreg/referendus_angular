@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
@@ -33,14 +33,10 @@ export class NavbarComponent implements OnInit {
 
   // Collapsable nav
   public isCollapsed:boolean = false;
- 
-  // Delete TODO
-  public collapsed(event:any):void {
-    console.log(event);
-  }
- 
-  public expanded(event:any):void {
-    console.log(event);
+  @HostListener('window:resize', ['$event'])
+  onResize(event){
+    // Since collapser will hide, make sure nav isn't collapsed with no way to expand it
+    if (event.target.innerWidth > 800) this.isCollapsed = false;
   }
 
   login(event, username:string, password:string) {
@@ -77,6 +73,7 @@ export class NavbarComponent implements OnInit {
   copy() {}
 
   public openModal() {
+    // Animated set to false until I figure out why 'fade' will not remove itself
     this.modalService.show(RefModalComponent, { animated: false });
   }
 
