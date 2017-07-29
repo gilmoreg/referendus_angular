@@ -9,13 +9,13 @@
     <a class="navbar-brand" href="#">Referendus</a>
     <div [collapse]="isCollapsed" id="navControls">
       <ul class="nav navbar-nav navbar-right">
-        <li class="">
+        <li *ngIf="(loggedIn$ | async)">
           <a (click)="openModal()" class="btn btn-default">New</a>
         </li>
-        <li class="">
+        <li *ngIf="(loggedIn$ | async)">
           <a (click)="copy()" class="btn btn-default">Copy</a>
         </li>
-        <li class="">
+        <li *ngIf="(loggedIn$ | async)">
           <app-nav-format></app-nav-format>
         </li>
         <li class="">
