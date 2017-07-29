@@ -1,86 +1,54 @@
-<div class="btn-group navbar-right navbar-form">
-  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <i class="fa fa-user-o" aria-hidden="true"></i> <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu">
-      <li>
-        <div class="col-md-12">
-          <form
-            *ngIf="!(loggedIn$ | async)"
-            (ngSubmit)="onSubmit(form)"
-            #form="ngForm"
-            class="form form-background"
-            role="form"
-            accept-charset="UTF-8"
-          >
-            <div class="form-group">
-              <label class="sr-only" for="username">Username</label>
-              <input
-                type="text"
-                class="form-control"
-                id="username"
-                placeholder="Username"
-                [ngModel]="defaultUsername"
-                #usernameCtrl="ngModel"
-                name="username"
-                id="username"
-                required
-              >
-              <span class="help-block" *ngIf="usernameCtrl.invalid && usernameCtrl.touched">Please enter a username!</span>
-            </div>
-            <div class="form-group">
-              <label class="sr-only" for="password">Password</label>
-              <input
-                type="password"
-                class="form-control"
-                id="password"
-                name="password"
-                placeholder="Password"
-                [ngModel]="defaultPassword"
-                #passwordCtrl="ngModel"
-                required
-              >
-              <span class="help-block" *ngIf="passwordCtrl.invalid && passwordCtrl.touched">Please enter a password!</span>
-            </div>
-            <div class="form-group button-row">
-              <button type="submit" class="btn btn-primary btn-block">Sign In</button>
-              <button (click)="signup($event, username.value, password.value)" class="btn btn-success btn-block" id="signup">Sign Up</button>
-            </div>
-          </form>
-          <div *ngIf="loggedIn$ | async" class="form-group button-row form-background" id="logout">
-            <button (click)="signout($event)" class="btn btn-primary btn-block" id="signout">Sign Out</button>
+<span dropdown class="navbar-text">
+  <a href dropdownToggle (click)="false">Account <span class="caret"></span></a>
+  <ul *dropdownMenu class="dropdown-menu">
+    <li role="menuitem">
+      <div class="col-md-12">
+        <form
+          *ngIf="!(loggedIn$ | async)"
+          (ngSubmit)="onSubmit(form)"
+          #form="ngForm"
+          class="form form-background"
+          role="form"
+          accept-charset="UTF-8"
+        >
+          <div class="form-group">
+            <label class="sr-only" for="username">Username</label>
+            <input
+              type="text"
+              class="form-control"
+              id="username"
+              placeholder="Username"
+              [ngModel]="defaultUsername"
+              #usernameCtrl="ngModel"
+              name="username"
+              id="username"
+              required
+            >
+            <span class="help-block" *ngIf="usernameCtrl.invalid && usernameCtrl.touched">Please enter a username!</span>
           </div>
-        </div>
-      </li>
-  </ul>
-</div>
-<!--
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-o" aria-hidden="true"></i><span class="caret"></span></a>
-  <ul class="dropdown-menu">
-    <li>
-      <div id="login-dropdown">
-        <div class="col-md-12">
-          <form *ngIf="!(loggedIn$ | async)" (submit)="login($event, username.value, password.value)" class="form" role="form" accept-charset="UTF-8" id="login-nav">
-            <div class="form-group">
-              <label class="sr-only" for="username">Username</label>
-              <input type="text" class="form-control" id="username" placeholder="Username" required>
-            </div>
-            <div class="form-group">
-              <label class="sr-only" for="password">Password</label>
-              <input type="password" class="form-control" id="password" placeholder="Password" required>
-            </div>
-            <div class="form-group">
-              <div class="signin-message"></div>
-              <button (click)="login($event, username.value, password.value)" class="btn btn-primary btn-block">Sign In</button>
-              <button (click)="signup($event, username.value, password.value)" class="btn btn-success btn-block" id="signup">Sign Up</button>
-            </div>
-          </form>
-          <div *ngIf="loggedIn$ | async" class="form-group" id="logout">
-            <button (click)="signout($event)" class="btn btn-primary btn-block" id="signout">Sign Out</button>
+          <div class="form-group">
+            <label class="sr-only" for="password">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              name="password"
+              placeholder="Password"
+              [ngModel]="defaultPassword"
+              #passwordCtrl="ngModel"
+              required
+            >
+            <span class="help-block" *ngIf="passwordCtrl.invalid && passwordCtrl.touched">Please enter a password!</span>
           </div>
+          <div class="form-group button-row">
+            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+            <button (click)="signup($event, username.value, password.value)" class="btn btn-success btn-block" id="signup">Sign Up</button>
+          </div>
+        </form>
+        <div *ngIf="loggedIn$ | async" class="form-group button-row form-background" id="logout">
+          <button (click)="signout($event)" class="btn btn-primary btn-block" id="signout">Sign Out</button>
         </div>
       </div>
     </li>
   </ul>
-</li> -->
+</span>

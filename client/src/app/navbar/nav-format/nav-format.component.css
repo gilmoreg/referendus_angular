@@ -1,0 +1,13 @@
+a, a:visited, a:focus {
+  color: #98978b
+}
+
+@media (max-width: 800px) {
+  a {
+    display: block;
+    text-align: center;
+  }
+  li {
+    background-color: white;
+  }
+}

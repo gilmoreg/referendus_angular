@@ -1,4 +1,18 @@
-<div class="btn-group" dropdown>
+<span dropdown class="navbar-text">
+  <a href dropdownToggle (click)="false">Format <span class="caret"></span></a>
+  <ul *dropdownMenu class="dropdown-menu">
+    <li role="menuitem">
+      <a class="dropdown-item" routerLink="." (click)="setAPAFormat()"><i class="fa fa-check" *ngIf="(apaFormat$ | async)" aria-hidden="true"></i>APA</a>
+    </li>
+    <li role="menuitem">
+      <a class="dropdown-item" routerLink="." (click)="setChicagoFormat()"><i class="fa fa-check" *ngIf="(chicagoFormat$ | async)" aria-hidden="true"></i>Chicago/Turabian</a>
+    </li>
+    <li role="menuitem">
+      <a class="dropdown-item" routerLink="." (click)="setMLAFormat()"><i class="fa fa-check" *ngIf="(mlaFormat$ | async)" aria-hidden="true"></i>MLA</a>
+    </li>
+  </ul>
+</span>
+<!--<div class="btn-group navbar-right navbar-form" dropdown>
   <button dropdownToggle type="button" class="btn btn-default dropdown-toggle">
     Format <span class="caret"></span>
   </button>
@@ -14,3 +28,4 @@
     </li>
   </ul>
 </div>
+-->

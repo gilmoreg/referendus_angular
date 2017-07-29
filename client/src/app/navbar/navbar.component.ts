@@ -15,9 +15,7 @@ import { RefModalComponent } from '../modals/ref-modal/ref-modal.component';
 })
 export class NavbarComponent implements OnInit {
   loggedIn$: Observable<boolean>;
-  apaFormat$: Observable<boolean>;
-  chicagoFormat$: Observable<boolean>;
-  mlaFormat$: Observable<boolean>;
+  
   // Temporary for testing
   type: string = 'article';
   public modalRef: BsModalRef;
@@ -26,9 +24,6 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     this.loggedIn$ = this.store.select(state => state.uiReducer.loggedIn);
-    this.apaFormat$ = this.store.select(state => state.uiReducer.format.apa);
-    this.chicagoFormat$ = this.store.select(state => state.uiReducer.format.chicago);
-    this.mlaFormat$ = this.store.select(state => state.uiReducer.format.mla);
   }
 
   // Collapsable nav
@@ -56,18 +51,6 @@ export class NavbarComponent implements OnInit {
   signout(event) {
     event.preventDefault();
     this.store.dispatch({ type: 'LOGOUT' });
-  }
-
-  setAPAFormat() {
-    this.store.dispatch({ type: 'SET_FORMAT', payload: 'apa' });
-  }
-
-  setChicagoFormat() {
-    this.store.dispatch({ type: 'SET_FORMAT', payload: 'chicago' });
-  }
-
-  setMLAFormat() {
-    this.store.dispatch({ type: 'SET_FORMAT', payload: 'mla' });
   }
 
   copy() {}
