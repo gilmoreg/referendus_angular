@@ -24,16 +24,14 @@ export class ArticleComponent implements OnInit {
   }
 
   formChanged() {
-    console.log('changed');
     this.ref.detectChanges();
   }
 
   onSubmit(form) {
     if (form.invalid) {
-      console.log('invalid', form);
       return;
     }
-    console.log(form.value);
+    // Submit form
   }
 
 }
