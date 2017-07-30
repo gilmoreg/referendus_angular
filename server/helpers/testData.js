@@ -1,8 +1,6 @@
-const faker = require('faker');
-
 exports.generateAuthorName = () => ({
-  firstName: faker.name.firstName(),
-  lastName: faker.name.lastName(),
+  firstName: 'test',
+  lastName: 'test',
 });
 
 // generate an object represnting a ref.
@@ -10,41 +8,41 @@ exports.generateAuthorName = () => ({
 // or request.body data
 exports.generateArticleData = () => ({
   user: 'test',
-  type: 'Article',
-  title: faker.company.catchPhrase(),
+  type: 'article',
+  title: 'testing test',
   authors: [
     { author: exports.generateAuthorName() },
     { author: exports.generateAuthorName() },
   ],
   year: 2017,
-  journal: faker.company.companyName(),
-  volume: `${faker.random.number()}`,
-  issue: `${faker.random.number()}`,
-  pages: `${faker.random.number()}-${faker.random.number()}`,
-  url: faker.internet.url(),
+  journal: 'test journal',
+  volume: 1,
+  issue: 1,
+  pages: '1=10',
+  url: 'http://test.com',
 });
 
 exports.generateBookData = () => ({
   user: 'test',
-  type: 'Book',
-  title: faker.company.catchPhrase(),
+  type: 'book',
+  title: 'test',
   authors: [
     { author: exports.generateAuthorName() },
     { author: exports.generateAuthorName() },
   ],
-  city: faker.address.city(),
-  publisher: faker.company.companyName(),
+  city: 'Test',
+  publisher: 'Test Publisher',
   year: 2017,
 });
 
 exports.generateWebsiteData = () => ({
   user: 'test',
-  type: 'Website',
-  title: faker.company.catchPhrase(),
-  siteTitle: faker.company.companyName(),
-  accessDate: faker.date.recent(),
-  pubDate: faker.date.past(),
-  url: faker.internet.url(),
+  type: 'website',
+  title: 'test',
+  siteTitle: 'Test',
+  accessDate: new Date(),
+  pubDate: new Date(),
+  url: 'http://test.com',
 });
 
 exports.seedRefData = (References) => {

@@ -26,15 +26,15 @@ exports.createRef = (req, res) => {
   }
 
   switch (req.body.type) {
-    case 'Article': {
+    case 'article': {
       requiredFields = ['title', 'authors', 'year', 'journal', 'volume', 'issue', 'pages'];
       break;
     }
-    case 'Book': {
+    case 'book': {
       requiredFields = ['title', 'authors', 'city', 'publisher', 'year'];
       break;
     }
-    case 'Website': {
+    case 'website': {
       requiredFields = ['title', 'siteTitle', 'accessDate', 'url'];
       break;
     }
