@@ -18,7 +18,7 @@ exports.generateArticleData = () => ({
   journal: 'test journal',
   volume: 1,
   issue: 1,
-  pages: '1=10',
+  pages: '1-10',
   url: 'http://test.com',
 });
 

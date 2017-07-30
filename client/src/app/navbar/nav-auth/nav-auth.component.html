@@ -42,7 +42,7 @@
           </div>
           <div class="form-group button-row">
             <button type="submit" class="btn btn-primary btn-block">Sign In</button>
-            <button (click)="signup($event, username.value, password.value)" class="btn btn-success btn-block" id="signup">Sign Up</button>
+            <button (click)="signup($event, usernameCtrl.value, passwordCtrl.value)" class="btn btn-success btn-block" id="signup">Sign Up</button>
           </div>
         </form>
         <div *ngIf="loggedIn$ | async" class="form-group button-row form-background" id="logout">
