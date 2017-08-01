@@ -69,7 +69,7 @@ exports.deleteRef = (req, res) => {
     .findOneAndRemove({ _id: req.params.id, user: req.user._doc.username })
     .exec()
     .then(() => res.status(204).end())
-    .catch(err => new Error(`Error creating reference: ${err}`));
+    .catch(err => new Error(`Error deleting reference: ${err}`));
 };
 
 exports.editRef = (req, res, next) => {

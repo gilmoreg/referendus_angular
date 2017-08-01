@@ -4,7 +4,6 @@
   role="form"
   accept-charset="UTF-8"
 >
-    <input type="hidden" name="type" value="article">
     <div class="form-group">
       <label for="author">* Author</label>
       <input (change)="formChanged()" [ngModel]="defaultAuthor" #author="ngModel" class="form-control" type="text" id="authors" name="authors" placeholder="Last, First, Middle" required>

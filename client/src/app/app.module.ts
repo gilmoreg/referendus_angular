@@ -2,7 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from "@angular/http";
+import { HttpClientModule } from '@angular/common/http';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -61,7 +61,7 @@ import { NavSearchComponent } from './navbar/nav-search/nav-search.component';
       maxAge: 5
     }),
     EffectsModule.run(APIEffects),
-    HttpModule,
+    HttpClientModule,
     CollapseModule.forRoot(),
     ModalModule.forRoot(),
     BsDropdownModule.forRoot(),

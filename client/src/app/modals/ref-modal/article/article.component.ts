@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
+import { Http } from '@angular/http';
 
 @Component({
   selector: 'app-article',
@@ -17,8 +18,9 @@ export class ArticleComponent implements OnInit {
   defaultPages = 'n/a';
   defaultVolume = 'n/a';
   defaultIssue = 'n/a';
+  defaultType = 'article';
 
-  constructor(private ref: ChangeDetectorRef) { }
+  constructor(private ref: ChangeDetectorRef, private http: Http) { }
 
   ngOnInit() {
   }
@@ -32,6 +34,10 @@ export class ArticleComponent implements OnInit {
       return;
     }
     // Submit form
+    this.http.post('/refs', Object.assign({}, form.value, { type: 'article'} )).subscribe((res) => {
+      // Close modal, refresh list
+      console.log(res);
+    });
   }
 
 }
