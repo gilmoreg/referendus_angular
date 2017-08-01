@@ -24,8 +24,20 @@ export class NavFormatComponent implements OnInit {
           });
         const formatElement = <HTMLInputElement>document.querySelector(`#${format}`);
         if (formatElement) formatElement.checked = true;
+        
+        // Refs need to be re-synced with format change
+        this.store.dispatch({ type: 'SYNC' });
       }
     });
+
+    // Check if a format choice exists in localStorage and set it
+    const lsFormat = localStorage.getItem('format');
+    if (lsFormat) {
+      this.store.dispatch({ type: 'SET_FORMAT', payload: lsFormat });
+    } else {
+      // Otherwise set the default as APA
+      this.store.dispatch({ type: 'SET_FORMAT', payload: 'apa' });
+    }
   }
 
   setFormat(event) {

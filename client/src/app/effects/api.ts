@@ -35,9 +35,10 @@ export class APIEffects {
 
   @Effect() sync$ = this.action$
     .ofType('SYNC')
-    .withLatestFrom(this.store$.select(state => state.format))
-    .switchMap(([format]) => {
-      return this.http.get<AuthResponse>(`${environment.apiURL}/refs?format=${format.payload}`);
+    .withLatestFrom(this.store$.select(state => state.uiReducer.format))
+    .switchMap(([action, format]) => {
+      if (format) return this.http.get<AuthResponse>(`${environment.apiURL}/refs?format=${format}`);
+      return Promise.reject('No format saved');
     })
     .map(res => ({ type: 'SYNC_REFERENCES_SUCCESS', payload: res }))
 

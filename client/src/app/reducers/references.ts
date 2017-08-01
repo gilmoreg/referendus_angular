@@ -11,7 +11,9 @@ export function referencesReducer(state:Array<object> = [], action:Action) {
     case 'DELETE_REFERENCE': {
       return state.filter((ref: any) => ref.id !== action.payload.id);
     }
-    case 'SYNC_REFERENCES_SUCCESS': return action.payload.references;
+    case 'SYNC_REFERENCES_SUCCESS': {
+      return action.payload;
+    }
     case 'UPDATE_REFERENCE': {
       return state.map((ref:any) => {
         if (ref.id === action.payload.id) {
