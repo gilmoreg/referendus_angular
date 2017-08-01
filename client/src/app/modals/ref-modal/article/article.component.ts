@@ -32,7 +32,7 @@ interface ArticleResponse {
 export class ArticleComponent implements OnInit {
   defaultAuthor = 'Murphy, Avon, J';
   defaultJournal = 'Technical Communication';
-  defaultTitle = 'Identifying Classes in Legacy JavaScript Code';
+  defaultTitle = 'Review of Four Books on HTML5';
   defaultUrl = 'www.jstor.org/stable/43092912';
   defaultTags = 'JavaScript, HTML';
   defaultNotes = '';

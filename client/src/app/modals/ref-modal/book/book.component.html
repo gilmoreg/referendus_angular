@@ -1,3 +1,47 @@
-<p>
-  book works!
-</p>
+<form
+  (ngSubmit)="onSubmit(form)"
+  #form="ngForm"
+  role="form"
+  accept-charset="UTF-8"
+>
+    <div class="form-group">
+      <label for="author">* Author</label>
+      <input (change)="formChanged()" [ngModel]="defaultAuthor" #author="ngModel" class="form-control" type="text" id="authors" name="authors" placeholder="Last, First, Middle" required>
+      <span class="help-block" *ngIf="author.invalid && author.touched">Please enter at least one author, last name first!</span>
+    </div>
+    <div class="form-group">
+      <label for="title">* Title</label>
+      <input #title="ngModel" [ngModel]="defaultTitle" class="form-control" type="text" id="title" name="title" required>
+      <span class="help-block" *ngIf="title.invalid && title.touched">Please enter an article title!</span>
+    </div>
+    <div class="form-group">
+      <label for="city">* City</label>
+      <input #city="ngModel" [ngModel]="defaultCity" class="form-control" type="city" id="city" name="city" required>
+      <span class="help-block" *ngIf="city.invalid && city.touched">Please enter a city!</span>
+    </div>
+    <div class="form-group">
+      <label for="publisher">* Publisher</label>
+      <input #publisher="ngModel" [ngModel]="defaultPublisher" class="form-control" type="publisher" id="publisher" name="publisher" required>
+      <span class="help-block" *ngIf="publisher.invalid && publisher.touched">Please enter a publisher!</span>
+    </div>
+    <div class="form-group">
+      <label for="year">* Year</label>
+      <input (change)="formChanged()" #year="ngModel" [ngModel]="defaultYear" class="form-control" type="number" min="1000" id="year" name="year" required>
+      <span class="help-block" *ngIf="year.invalid && year.touched">Please enter a publication year!</span>
+    </div>
+    <div class="form-group">
+      <label for="url">URL</label>
+      <input #url="ngModel" [ngModel]="defaultURL" class="form-control" type="text" id="url" name="url" placeholder="URL">
+    </div>    
+    <div class="form-group">
+      <label for="tags">Tags</label>
+      <input #tags="ngModel" [ngModel]="defaultTags" class="form-control" type="text" id="tags" name="tags" placeholder="Separate by commas">
+    </div>
+    <div class="form-group">
+      <label for="notes">Notes</label>
+      <textarea #notes="ngModel" [ngModel]="defaultNotes" class="form-control" type="text" id="notes" name="notes" rows="3"></textarea>
+    </div>
+    <div class="form-group submit submit-row">
+      <button type="submit" class="btn btn-warning new-button" name="submitNew">Add</button>
+    </div>
+</form>
