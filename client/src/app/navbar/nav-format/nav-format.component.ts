@@ -9,27 +9,26 @@ import { Store } from '@ngrx/store';
   styleUrls: ['./nav-format.component.css']
 })
 export class NavFormatComponent implements OnInit {
-  apaFormat$: Observable<boolean>;
-  chicagoFormat$: Observable<boolean>;
-  mlaFormat$: Observable<boolean>;
+  format$: Observable<string>;
 
   constructor(private store: Store<any>) {}
 
   ngOnInit() {
-    this.apaFormat$ = this.store.select(state => state.uiReducer.format.apa);
-    this.chicagoFormat$ = this.store.select(state => state.uiReducer.format.chicago);
-    this.mlaFormat$ = this.store.select(state => state.uiReducer.format.mla);
+    this.format$ = this.store.select(state => state.uiReducer.format);
+    this.format$.subscribe((format) => {
+      if (format) {
+        Array.from(document.querySelectorAll('[type=radio]'))
+          .forEach((input) => {
+            const el = <HTMLInputElement>input;
+            if (el) el.checked = false;
+          });
+        const formatElement = <HTMLInputElement>document.querySelector(`#${format}`);
+        if (formatElement) formatElement.checked = true;
+      }
+    });
   }
 
-  setAPAFormat() {
-    this.store.dispatch({ type: 'SET_FORMAT', payload: 'apa' });
-  }
-
-  setChicagoFormat() {
-    this.store.dispatch({ type: 'SET_FORMAT', payload: 'chicago' });
-  }
-
-  setMLAFormat() {
-    this.store.dispatch({ type: 'SET_FORMAT', payload: 'mla' });
+  setFormat(event) {
+    this.store.dispatch({ type: 'SET_FORMAT', payload: event.target.value });
   }
 }

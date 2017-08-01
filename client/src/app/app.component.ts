@@ -11,9 +11,6 @@ export class AppComponent implements OnInit {
   title: 'Referendus';
   loggedIn$: Observable<boolean>;
   format$: Observable<string>;
-  apaFormat$: Observable<boolean>;
-  chicagoFormat$: Observable<boolean>;
-  mlaFormat$: Observable<boolean>;
   format: string;
   isLoggedIn: boolean;
 
@@ -26,30 +23,16 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.loggedIn$ = this.store.select(state => state.uiReducer.loggedIn);
-    this.apaFormat$ = this.store.select(state => state.uiReducer.format.apa);
-    this.chicagoFormat$ = this.store.select(state => state.uiReducer.format.chicago);
-    this.mlaFormat$ = this.store.select(state => state.uiReducer.format.mla);
-    
-    // Keep local format value up to date with store and resync on change
-    this.apaFormat$.subscribe((format) => {
-      if (format) {
-        this.format = 'apa';
-        this.syncReferences();
-      }
-    });
-    this.chicagoFormat$.subscribe((format) => {
-      if (format) {
-        this.format = 'chicago';
-        this.syncReferences();
-      }
-    });
-    this.mlaFormat$.subscribe((format) => {
-      if (format) {
-        this.format = 'mla';
-        this.syncReferences();
-      }
-    });
+    this.format$ = this.store.select(state => state.uiReducer.format);
 
+    // Keep local format value up to date with store and resync on change
+    this.format$.subscribe((format) => {
+      if (format) {
+        this.format = format;
+        this.syncReferences();
+      }
+    });
+    
     // Sync references if loggedIn ever changes to True
     this.loggedIn$.subscribe((isLoggedIn) => {
       if (isLoggedIn) {

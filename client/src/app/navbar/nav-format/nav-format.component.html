@@ -2,21 +2,21 @@
   <a href dropdownToggle (click)="false">Format <span class="caret"></span></a>
   <ul *dropdownMenu class="dropdown-menu">
     <li role="menuitem">
-      <a class="dropdown-item" routerLink="." (click)="setAPAFormat()"><i class="fa fa-check" *ngIf="(apaFormat$ | async)" aria-hidden="true"></i>APA</a>
-    </li>
-    <li role="menuitem">
-      <a class="dropdown-item" routerLink="." (click)="setChicagoFormat()"><i class="fa fa-check" *ngIf="(chicagoFormat$ | async)" aria-hidden="true"></i>Chicago/Turabian</a>
-    </li>
-    <li role="menuitem">
-      <a class="dropdown-item" routerLink="." (click)="setMLAFormat()"><i class="fa fa-check" *ngIf="(mlaFormat$ | async)" aria-hidden="true"></i>MLA</a>
-    </li>
+      <form >
+        <div class="radio">
+          <label><input type="radio" name="apa" value="apa" id="apa" (change)="setFormat($event)">APA</label>
+        </div>
+        <div class="radio">
+          <label><input type="radio" name="chicago" value="chicago" id="chicago" (change)="setFormat($event)">Chicago/Turabian</label>
+        </div>
+        <div class="radio">
+          <label><input type="radio" name="mla" value="mla" id="mla" (change)="setFormat($event)">MLA</label>
+        </div>
+      </form>
+    </li>  
   </ul>
 </span>
-<!--<div class="btn-group navbar-right navbar-form" dropdown>
-  <button dropdownToggle type="button" class="btn btn-default dropdown-toggle">
-    Format <span class="caret"></span>
-  </button>
-  <ul *dropdownMenu class="dropdown-menu" role="menu">
+<!--
     <li role="menuitem">
       <a class="dropdown-item" routerLink="." (click)="setAPAFormat()"><i class="fa fa-check" *ngIf="(apaFormat$ | async)" aria-hidden="true"></i>APA</a>
     </li>
@@ -26,6 +26,4 @@
     <li role="menuitem">
       <a class="dropdown-item" routerLink="." (click)="setMLAFormat()"><i class="fa fa-check" *ngIf="(mlaFormat$ | async)" aria-hidden="true"></i>MLA</a>
     </li>
-  </ul>
-</div>
 -->

@@ -10,11 +10,7 @@ export const SET_USER = 'SET_USER';
 interface State {
   activeTab: number,
   activeSearch: string,
-  format: {
-    apa: boolean,
-    chicago: boolean,
-    mla: boolean,
-  },
+  format: string,
   loggedIn: boolean,
   user: string,
 }
@@ -22,11 +18,7 @@ interface State {
 const initialState = {
   activeTab:<number> 0,
   activeSearch:<string> '',
-  format: {
-    apa:<boolean> false,
-    chicago:<boolean> false,
-    mla:<boolean> false,
-  },
+  format: '',
   loggedIn:<boolean> false,
   user:<string> '',
 }
@@ -39,19 +31,7 @@ export function uiReducer(state:State = initialState, action:Action) {
     case 'SIGNUP_FAILED':
     case 'LOGOUT_COMPLETE': return Object.assign({}, state, { loggedIn: false });
     case 'SET_ACTIVE_SEARCH': return Object.assign({}, state, { currentSearch: action.payload.search });
-    case 'SET_FORMAT': {
-      const format = state.format;
-      format.apa = false;
-      format.chicago = false;
-      format.mla = false;
-      switch (action.payload) {
-        case 'apa': format.apa = true; break;
-        case 'chicago': format.chicago = true; break;
-        case 'mla': format.mla = true; break;
-        default: return state;
-      }
-      return Object.assign({}, state, { format });
-    }
+    case 'SET_FORMAT': return Object.assign({}, state, { format: action.payload });
     case 'SET_USER': return Object.assign({}, state, { user: action.payload.user });
     default: return state;
   }

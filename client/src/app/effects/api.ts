@@ -2,6 +2,7 @@ import { Effect, Actions, toPayload } from '@ngrx/effects';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Store } from '@ngrx/store';
 
 import { environment } from '../../environments/environment';
 
@@ -12,7 +13,7 @@ interface AuthResponse {
 
 @Injectable()
 export class APIEffects {
-  constructor(private action$: Actions, private http: HttpClient) {}
+  constructor(private action$: Actions, private http: HttpClient, private store$: Store<any>) {}
 
   @Effect() check$ = this.action$
     .ofType('CHECK')
@@ -34,9 +35,9 @@ export class APIEffects {
 
   @Effect() sync$ = this.action$
     .ofType('SYNC')
-    .map(action => action.payload)
-    .switchMap((format) => {
-      return this.http.get<AuthResponse>(`${environment.apiURL}/refs?format=${format}`);
+    .withLatestFrom(this.store$.select(state => state.format))
+    .switchMap(([format]) => {
+      return this.http.get<AuthResponse>(`${environment.apiURL}/refs?format=${format.payload}`);
     })
     .map(res => ({ type: 'SYNC_REFERENCES_SUCCESS', payload: res }))
 

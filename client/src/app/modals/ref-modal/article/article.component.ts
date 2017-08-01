@@ -1,4 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Store } from '@ngrx/store';
 import { HttpClient } from '@angular/common/http';
 
 interface Author {
@@ -40,7 +42,7 @@ export class ArticleComponent implements OnInit {
   defaultIssue = '4';
   defaultType = 'article';
 
-  constructor(private ref: ChangeDetectorRef, private http: HttpClient) { }
+  constructor(private ref: ChangeDetectorRef, private store: Store<any>, private http: HttpClient) { }
 
   ngOnInit() {
   }
@@ -72,6 +74,7 @@ export class ArticleComponent implements OnInit {
     const post = this.buildJSON(form.value);
     this.http.post<ArticleResponse>('/refs', post).subscribe((res) => {
       // TODO Close modal, refresh list
+      this.store.dispatch({ type: 'SYNC' });
       console.log(res);
     });
   }
