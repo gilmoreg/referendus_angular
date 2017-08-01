@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 
 // State Management
 import { StoreModule } from '@ngrx/store';
@@ -30,6 +31,7 @@ import { RefModalComponent } from './modals/ref-modal/ref-modal.component';
 import { NewButtonsComponent } from './modals/ref-modal/new-buttons/new-buttons.component';
 import { NavFormatComponent } from './navbar/nav-format/nav-format.component';
 import { NavSearchComponent } from './navbar/nav-search/nav-search.component';
+import { ReferenceLiComponent } from './main/reference-li/reference-li.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,8 @@ import { NavSearchComponent } from './navbar/nav-search/nav-search.component';
     RefModalComponent,
     NewButtonsComponent,
     NavFormatComponent,
-    NavSearchComponent
+    NavSearchComponent,
+    ReferenceLiComponent
   ],
   imports: [
     BrowserModule,
@@ -63,6 +66,7 @@ import { NavSearchComponent } from './navbar/nav-search/nav-search.component';
     CollapseModule.forRoot(),
     ModalModule.forRoot(),
     BsDropdownModule.forRoot(),
+    TabsModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

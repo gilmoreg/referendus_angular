@@ -1,4 +1,19 @@
-<div>
+<div class="container-fluid">
   <app-instructions></app-instructions>
-  <p>Main works!</p>
+  <div class="container">
+    <tabset>
+      <tab *ngFor="let tab of tabs"
+        [heading]="tab.heading"
+        [active]="tab.active"
+        (select)="selectTab(tab.type)">
+        <ul class="list-group">
+          <li
+            *ngFor="let ref of displayedRefs" 
+            class="list-group-item">
+            <app-reference-li [reference]="ref"></app-reference-li>
+          </li>
+        </ul>
+      </tab>
+    </tabset>
+  </div>
 </div>

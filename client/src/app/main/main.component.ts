@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-main',
@@ -6,10 +8,57 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
+  tabs = [
+    {
+      heading: 'all',
+      type: 'all',
+      active: true,
+    },
+    {
+      heading: 'articles',
+      type: 'article',
+      active: false,
+    },
+    {
+      heading: 'books',
+      type: 'book',
+      active: false,
+    },
+    {
+      heading: 'websites',
+      type: 'website',
+      active: false,
+    }
+  ]
+  activeTab = 'all';
 
-  constructor() { }
+  references = [];
+  displayedRefs = [];
+  references$: Observable<any>;
+  
+
+  constructor(private store: Store<any>) { }
 
   ngOnInit() {
+    this.references$ = this.store.select(state => state.referencesReducer.references);
+    
+    this.references$.subscribe(references => {
+      this.references = references;
+      this.updateRefList();
+    });
   }
 
+  updateRefList() {
+    if (this.activeTab === 'all') this.displayedRefs = this.references;
+    else this.displayedRefs = this.references.filter(ref => ref.data.type === this.activeTab);
+  }
+
+  selectTab(activeTab) {
+    this.activeTab = activeTab;
+    this.tabs.forEach(tab => {
+      if (tab.type === activeTab) tab.active = true;
+      else tab.active = false;
+    });
+    this.updateRefList();
+  }
 }
