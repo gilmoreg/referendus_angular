@@ -11,3 +11,7 @@ a, a:visited, a:focus {
     background-color: white;
   }
 }
+
+.format-selector {
+  max-width: 200px;
+}

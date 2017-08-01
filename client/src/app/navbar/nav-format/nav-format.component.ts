@@ -17,7 +17,7 @@ export class NavFormatComponent implements OnInit {
     this.format$ = this.store.select(state => state.uiReducer.format);
     this.format$.subscribe((format) => {
       if (format) {
-        Array.from(document.querySelectorAll('[type=radio]'))
+        Array.from(document.querySelectorAll('[type=checkbox]'))
           .forEach((input) => {
             const el = <HTMLInputElement>input;
             if (el) el.checked = false;
