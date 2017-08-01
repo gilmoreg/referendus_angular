@@ -19,7 +19,6 @@ exports.getRefs = async (req, res) => {
 };
 
 exports.createRef = (req, res) => {
-  console.log('info', `POST ${JSON.stringify(req.body)}`);
   let requiredFields;
   if (!req.body.type) {
     throw new Error('Missing "type" in request body', res);
@@ -63,17 +62,14 @@ exports.createRef = (req, res) => {
     .catch(err => new Error(`Error creating reference: ${err}`));
 };
 
-exports.deleteRef = (req, res) => {
-  console.log('info', `DELETE ${req.params.id}`);
-  return Reference
+exports.deleteRef = (req, res) =>
+  Reference
     .findOneAndRemove({ _id: req.params.id, user: req.user._doc.username })
     .exec()
     .then(() => res.status(204).end())
     .catch(err => new Error(`Error deleting reference: ${err}`));
-};
 
 exports.editRef = (req, res, next) => {
-  console.log('info', `PUT ${req.body}`);
   if (req.params.id !== req.body.id) {
     const message = `
       Request path id (${req.params.id}) and request body id 
