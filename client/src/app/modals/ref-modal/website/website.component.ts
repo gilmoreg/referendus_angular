@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,
+  OnInit,
+  Output,
+  ChangeDetectorRef,
+  ChangeDetectionStrategy,
+  EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-website',
@@ -6,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./website.component.css']
 })
 export class WebsiteComponent implements OnInit {
+  @Output() close = new EventEmitter<string>();
 
   constructor() { }
 

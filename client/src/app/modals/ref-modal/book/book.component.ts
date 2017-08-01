@@ -1,4 +1,9 @@
-import { Component, OnInit, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
+import { Component,
+  OnInit,
+  Output,
+  ChangeDetectorRef,
+  ChangeDetectionStrategy,
+  EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import { HttpClient } from '@angular/common/http';
@@ -29,6 +34,8 @@ interface BookResponse {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BookComponent implements OnInit {
+  @Output() close = new EventEmitter<string>();
+
   defaultAuthor = 'Simpson, Kyle';
   defaultTitle = 'You Don\'t Know JS: ES6 & Beyond';
   defaultCity = 'Sebastopol';
@@ -66,9 +73,8 @@ export class BookComponent implements OnInit {
     // Submit form
     const post = this.buildJSON(form.value);
     this.http.post<BookResponse>('/refs', post).subscribe((res) => {
-      // TODO Close modal, refresh list
       this.store.dispatch({ type: 'SYNC' });
-      console.log(res);
+      this.close.emit();
     });
   }
 

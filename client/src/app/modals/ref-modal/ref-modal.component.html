@@ -8,9 +8,9 @@
     </div>
     <div class="modal-body">
       <app-new-buttons (typeChanged)="changeType($event)"></app-new-buttons>
-      <app-article *ngIf="type=='article'"></app-article>
-      <app-book *ngIf="type=='book'"></app-book>
-      <app-website *ngIf="type=='website'"></app-website>
+      <app-article *ngIf="type=='article'" (close)="bsModalRef.hide()"></app-article>
+      <app-book *ngIf="type=='book'" (close)="bsModalRef.hide()"></app-book>
+      <app-website *ngIf="type=='website'" (close)="bsModalRef.hide()"></app-website>
     </div>
   </div>
 </div>

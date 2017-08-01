@@ -1,4 +1,9 @@
-import { Component, OnInit, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
+import { Component,
+  OnInit,
+  Output,
+  ChangeDetectorRef,
+  ChangeDetectionStrategy,
+  EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import { HttpClient } from '@angular/common/http';
@@ -30,6 +35,8 @@ interface ArticleResponse {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ArticleComponent implements OnInit {
+  @Output() close = new EventEmitter<string>();
+
   defaultAuthor = 'Murphy, Avon, J';
   defaultJournal = 'Technical Communication';
   defaultTitle = 'Review of Four Books on HTML5';
@@ -73,9 +80,8 @@ export class ArticleComponent implements OnInit {
     // Submit form
     const post = this.buildJSON(form.value);
     this.http.post<ArticleResponse>('/refs', post).subscribe((res) => {
-      // TODO Close modal, refresh list
       this.store.dispatch({ type: 'SYNC' });
-      console.log(res);
+      this.close.emit();
     });
   }
 }

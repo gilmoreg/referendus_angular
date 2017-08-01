@@ -1,4 +1,7 @@
-import { Component, OnInit, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
+import { Component,
+  OnInit,
+  ChangeDetectorRef,
+  ChangeDetectionStrategy } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 
 @Component({
