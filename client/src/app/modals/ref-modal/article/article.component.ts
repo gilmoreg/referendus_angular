@@ -1,5 +1,18 @@
 import { Component, OnInit, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
+
+interface ArticleResponse {
+  title: string,
+  authors: string,
+  year: string,
+  journal: string,
+  volume: string,
+  issue: string,
+  pages: string,
+  tags: string,
+  notes: string,
+  url: string
+}
 
 @Component({
   selector: 'app-article',
@@ -20,7 +33,7 @@ export class ArticleComponent implements OnInit {
   defaultIssue = 'n/a';
   defaultType = 'article';
 
-  constructor(private ref: ChangeDetectorRef, private http: Http) { }
+  constructor(private ref: ChangeDetectorRef, private http: HttpClient) { }
 
   ngOnInit() {
   }
@@ -34,7 +47,7 @@ export class ArticleComponent implements OnInit {
       return;
     }
     // Submit form
-    this.http.post('/refs', Object.assign({}, form.value, { type: 'article'} )).subscribe((res) => {
+    this.http.post<ArticleResponse>('/refs', Object.assign({}, form.value, { type: 'article'} )).subscribe((res) => {
       // Close modal, refresh list
       console.log(res);
     });
