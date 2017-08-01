@@ -61,7 +61,7 @@ export class ArticleComponent implements OnInit {
 
     const tags = formData.tags.split(',').map(t => ({ tag: t.trim() }));
     
-    return Object.assign({}, formData, { type: 'article' }, { authors: [author] }, { tags });
+    return Object.assign({}, formData, { type: 'article' }, { authors: [{ author }] }, { tags });
   }
 
   onSubmit(form) {
