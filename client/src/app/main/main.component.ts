@@ -40,8 +40,7 @@ export class MainComponent implements OnInit {
   constructor(private store: Store<any>) { }
 
   ngOnInit() {
-    this.references$ = this.store.select(state => state.referencesReducer.references);
-    
+    this.references$ = this.store.select(state => state.referencesReducer.references);  
     this.references$.subscribe(references => {
       this.references = references;
       this.updateRefList();
