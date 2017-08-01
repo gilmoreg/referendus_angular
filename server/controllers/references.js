@@ -57,9 +57,14 @@ exports.createRef = (req, res) => {
 
   return Reference
     .create(req.body)
-    .then(
-      ref => res.status(201).json(ref.json()))
-    .catch(err => new Error(`Error creating reference: ${err}`));
+    .then((ref) => {
+      console.log(ref.json());
+      res.status(201).json(ref.json());
+    })
+    .catch((err) => {
+      console.log(`Error creating reference: ${err}`);
+      throw new Error(`Error creating reference: ${err}`);
+    });
 };
 
 exports.deleteRef = (req, res) =>
@@ -67,7 +72,10 @@ exports.deleteRef = (req, res) =>
     .findOneAndRemove({ _id: req.params.id, user: req.user._doc.username })
     .exec()
     .then(() => res.status(204).end())
-    .catch(err => new Error(`Error deleting reference: ${err}`));
+    .catch((err) => {
+      console.log(`Error deleting reference: ${err}`);
+      throw new Error(`Error deleting reference: ${err}`);
+    });
 
 exports.editRef = (req, res, next) => {
   if (req.params.id !== req.body.id) {
