@@ -28,16 +28,16 @@ interface ArticleResponse {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ArticleComponent implements OnInit {
-  defaultAuthor = 'Silva, Leonardo, Humberto';
-  defaultJournal = 'Journal of Software: Evolution and Process';
+  defaultAuthor = 'Murphy, Avon, J';
+  defaultJournal = 'Technical Communication';
   defaultTitle = 'Identifying Classes in Legacy JavaScript Code';
-  defaultUrl = 'http://dx.doi.org/10.1002/smr.1864';
-  defaultTags = 'JavaScript, OOP';
+  defaultUrl = 'www.jstor.org/stable/43092912';
+  defaultTags = 'JavaScript, HTML';
   defaultNotes = '';
-  defaultYear = '2017';
-  defaultPages = 'n/a';
-  defaultVolume = 'n/a';
-  defaultIssue = 'n/a';
+  defaultYear = '2011';
+  defaultPages = '353-356';
+  defaultVolume = '58';
+  defaultIssue = '4';
   defaultType = 'article';
 
   constructor(private ref: ChangeDetectorRef, private http: HttpClient) { }
