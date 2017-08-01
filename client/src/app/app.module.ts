@@ -19,7 +19,6 @@ import { APIEffects } from './effects/api';
 import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { NavControlsComponent } from './navbar/nav-controls/nav-controls.component';
 import { NavAuthComponent } from './navbar/nav-auth/nav-auth.component';
 import { MainComponent } from './main/main.component';
 import { InstructionsComponent } from './main/instructions/instructions.component';
@@ -37,7 +36,6 @@ import { NavSearchComponent } from './navbar/nav-search/nav-search.component';
     AppComponent,
     LandingComponent,
     NavbarComponent,
-    NavControlsComponent,
     NavAuthComponent,
     MainComponent,
     InstructionsComponent,
