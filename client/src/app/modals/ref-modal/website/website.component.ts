@@ -50,6 +50,10 @@ export class WebsiteComponent implements OnInit {
   ngOnInit() {
   }
 
+  formChanged() {
+    this.ref.detectChanges();
+  }
+
   buildJSON(formData) {
     // TODO make sure invalid authors value invalidates the form
     const authors = formData.authors.split(',');
