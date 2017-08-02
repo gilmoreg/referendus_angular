@@ -1,2 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootswatch.min.css';
+
+.landing-background {
+  background-image: url(http://res.cloudinary.com/dk85nueap/image/upload/v1496896335/patrik-gothe-444_lhb0z0.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: 50px;
+}
