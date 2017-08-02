@@ -50,6 +50,10 @@ export class MainComponent implements OnInit {
     this.activeTab$ = this.store.select(state => state.uiReducer.activeTab);
     this.activeTab$.subscribe(tab => {
       this.activeTab = tab;
+      this.tabs.forEach(tab => {
+        if (tab.type === this.activeTab) tab.active = true;
+        else tab.active = false;
+      });
       this.updateRefList();
     });
   }
@@ -61,10 +65,5 @@ export class MainComponent implements OnInit {
 
   selectTab(activeTab) {
     this.store.dispatch({ type: 'CHANGE_TAB', payload: { tab: activeTab }});
-    this.tabs.forEach(tab => {
-      if (tab.type === activeTab) tab.active = true;
-      else tab.active = false;
-    });
-    this.updateRefList();
   }
 }
