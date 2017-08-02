@@ -7,6 +7,7 @@ import { Component,
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import { HttpClient } from '@angular/common/http';
+import * as moment from 'moment';
 
 interface Author {
   firstName: string,
@@ -30,7 +31,7 @@ interface WebsiteResponse {
 @Component({
   selector: 'app-website',
   templateUrl: './website.component.html',
-  styleUrls: ['./website.component.css']
+  styleUrls: ['./website.component.css'],
 })
 export class WebsiteComponent implements OnInit {
   @Output() close = new EventEmitter<string>();
@@ -38,14 +39,16 @@ export class WebsiteComponent implements OnInit {
   defaultURL = 'https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy';
   defaultTitle = 'Same-origin policy';
   defaultSiteTitle = 'Mozilla Developer Network';
-  defaultAccessDate = new Date();
-  defaultPubDate = new Date('09/28/2016');
+  defaultAccessDate = moment().format('YYYY-MM-DD');
+  defaultPubDate = moment(new Date('09/28/2016')).format('YYYY-MM-DD');
   defaultAuthor = 'Ruderman, Jesse';
   defaultTags = 'JavaScript';
   defaultNotes = '';
   defaultType = 'website';
 
-  constructor(private ref: ChangeDetectorRef, private store: Store<any>, private http: HttpClient) { }
+  constructor(private ref: ChangeDetectorRef,
+    private store: Store<any>,
+    private http: HttpClient) { }
 
   ngOnInit() {
   }

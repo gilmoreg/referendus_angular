@@ -7,7 +7,6 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
-import { DatePipe } from '@angular/common';
 
 // State Management
 import { StoreModule } from '@ngrx/store';
@@ -69,7 +68,7 @@ import { ReferenceLiComponent } from './main/reference-li/reference-li.component
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
   ],
-  providers: [DatePipe],
+  providers: [],
   bootstrap: [AppComponent],
   entryComponents: [ RefModalComponent ],
 })
