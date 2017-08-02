@@ -11,19 +11,25 @@ import { Store } from '@ngrx/store';
 export class NavFormatComponent implements OnInit {
   format$: Observable<string>;
 
+  apaChecked = false;
+  chicagoChecked = false;
+  mlaChecked = false;
+
   constructor(private store: Store<any>) {}
 
   ngOnInit() {
     this.format$ = this.store.select(state => state.uiReducer.format);
     this.format$.subscribe((format) => {
       if (format) {
-        Array.from(document.querySelectorAll('[type=checkbox]'))
-          .forEach((input) => {
-            const el = <HTMLInputElement>input;
-            if (el) el.checked = false;
-          });
-        const formatElement = <HTMLInputElement>document.querySelector(`#${format}`);
-        if (formatElement) formatElement.checked = true;
+        this.apaChecked = false;
+        this.chicagoChecked = false;
+        this.mlaChecked = false;
+        switch (format) {
+          case 'apa': this.apaChecked = true; break;
+          case 'chicago': this.chicagoChecked = true; break;
+          case 'mla': this.mlaChecked = true; break;
+          default:
+        }
         
         // Refs need to be re-synced with format change
         this.store.dispatch({ type: 'SYNC' });

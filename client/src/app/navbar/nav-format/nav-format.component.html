@@ -5,13 +5,13 @@
       <div class="container">
         <form>
           <div class="checkbox">
-            <label><input type="checkbox" name="apa" value="apa" id="apa" (change)="setFormat($event)">APA</label>
+            <label><input type="checkbox" name="apa" value="apa" id="apa" (change)="setFormat($event)" [checked]="apaChecked">APA</label>
           </div>
           <div class="checkbox">
-            <label><input type="checkbox" name="chicago" value="chicago" id="chicago" (change)="setFormat($event)">Chicago/Turabian</label>
+            <label><input type="checkbox" name="chicago" value="chicago" id="chicago" (change)="setFormat($event)" [checked]="chicagoChecked">Chicago/Turabian</label>
           </div>
           <div class="checkbox">
-            <label><input type="checkbox" name="mla" value="mla" id="mla" (change)="setFormat($event)">MLA</label>
+            <label><input type="checkbox" name="mla" value="mla" id="mla" (change)="setFormat($event)"[checked]="mlaChecked">MLA</label>
           </div>
         </form>
       </div>
