@@ -30,6 +30,7 @@ export class MainComponent implements OnInit {
       active: false,
     }
   ]
+  activeTab$: Observable<any>;
   activeTab = 'all';
 
   references = [];
@@ -45,6 +46,12 @@ export class MainComponent implements OnInit {
       this.references = references;
       this.updateRefList();
     });
+
+    this.activeTab$ = this.store.select(state => state.uiReducer.activeTab);
+    this.activeTab$.subscribe(tab => {
+      this.activeTab = tab;
+      this.updateRefList();
+    });
   }
 
   updateRefList() {
@@ -53,7 +60,7 @@ export class MainComponent implements OnInit {
   }
 
   selectTab(activeTab) {
-    this.activeTab = activeTab;
+    this.store.dispatch({ type: 'CHANGE_TAB', payload: { tab: activeTab }});
     this.tabs.forEach(tab => {
       if (tab.type === activeTab) tab.active = true;
       else tab.active = false;

@@ -8,7 +8,7 @@ export const SET_FORMAT = 'SET_FORMAT';
 export const SET_USER = 'SET_USER';
 
 interface State {
-  activeTab: number,
+  activeTab: string,
   activeSearch: string,
   format: string,
   loggedIn: boolean,
@@ -16,7 +16,7 @@ interface State {
 }
 
 const initialState = {
-  activeTab:<number> 0,
+  activeTab:<string> 'all',
   activeSearch:<string> '',
   format: '',
   loggedIn:<boolean> false,
