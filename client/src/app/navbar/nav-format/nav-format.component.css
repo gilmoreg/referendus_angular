@@ -15,3 +15,8 @@ a, a:visited, a:focus {
 .format-selector {
   max-width: 200px;
 }
+
+.dropdown-toggle {
+  background-color: #3E3F3A !important;
+  text-decoration: none;
+}

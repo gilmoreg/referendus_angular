@@ -23,3 +23,8 @@ a, a:visited, a:focus {
     background-color: white;
   }
 }
+
+.dropdown-toggle {
+  background-color: #3E3F3A !important;
+  text-decoration: none;
+}
