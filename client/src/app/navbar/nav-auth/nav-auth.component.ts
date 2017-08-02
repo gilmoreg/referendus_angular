@@ -16,6 +16,12 @@ export class NavAuthComponent implements OnInit {
 
   ngOnInit() {
     this.loggedIn$ = this.store.select(state => state.uiReducer.loggedIn);
+    this.loggedIn$.subscribe(loggedIn => {
+      // This isn't the Angular way but this class has to be attached to the body oustide the root to work
+      const body = document.querySelector('body');
+      if (loggedIn) body.classList.remove('landing-background');
+      else body.classList.add('landing-background');
+    });
   }
 
   onSubmit(submittedForm) {
@@ -28,7 +34,7 @@ export class NavAuthComponent implements OnInit {
   }
 
   login(event, username:string, password:string) {
-    
+    event.preventDefault();
     this.store.dispatch({ type: 'LOGIN', payload: { username, password }});
   }
 
