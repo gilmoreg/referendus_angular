@@ -1,2 +1,6 @@
-<p [innerHTML]="reference.html">
-</p>
+<li class="ref list-group-item" data-id="${ref.data._id}">
+  <div class="label label-primary ref-label">{{reference.type}}</div>
+  <div class="ref-del"><i class="fa fa-trash-o" aria-hidden="true"></i></div>
+  <div class="ref-edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></div>
+  <div class="ref-text" [innerHTML]="reference.html"></div>
+</li>

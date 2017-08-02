@@ -1,0 +1,24 @@
+.ref {
+  line-height: 20px;
+  max-width: 768px;
+  margin: 0 auto;
+}
+
+.list-group .ref-label {
+  float: left;
+  width: 55px;
+}
+
+.ref-edit, .ref-del {
+  width: 30px;
+  float: right;
+  text-align: center;
+  line-height: 14px;
+}
+
+.ref-text {
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
+  padding-left: 10px;
+}
