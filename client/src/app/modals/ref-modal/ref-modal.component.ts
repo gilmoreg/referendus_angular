@@ -40,7 +40,7 @@ export class RefModalComponent implements OnInit {
       pages: new FormControl('353-356'),
     }),
     book: new FormGroup({
-
+      
     }),
     website: new FormGroup({
 
@@ -84,12 +84,12 @@ export class RefModalComponent implements OnInit {
       case 'website': data = formData.website; break;
       default: data = formData;
     }
-    console.log('buildJSON', data);
-    const tags = formData.tags.split(',').map(t => ({ tag: t.trim() }));
+    data.tags = formData.tags.split(',').map(t => ({ tag: t.trim() }));
     data.notes = formData.notes;
+    data.type = this.type;
     author = this.buildAuthor(data.author);
-    if (author) return Object.assign({}, data, { type: this.type }, { tags }, { authors: [{ author }] });
-    return Object.assign({}, formData.website, { type: this.type }, { tags });
+    if (author) return Object.assign({}, data, { authors: [{ author }] });
+    return data;
   }
 
   createRef(data) {
