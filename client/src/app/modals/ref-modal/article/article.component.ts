@@ -5,26 +5,6 @@ import {
   ChangeDetectionStrategy
 } from '@angular/core';
 
-interface Author {
-  firstName: string,
-  middleName: string,
-  lastName: string,
-}
-
-interface ArticleResponse {
-  type: string,
-  title: string,
-  authors: Array<Author>,
-  year: string,
-  journal: string,
-  volume: string,
-  issue: string,
-  pages: string,
-  tags: Array<string>,
-  notes: string,
-  url: string
-}
-
 @Component({
   selector: 'app-article',
   templateUrl: './article.component.html',
