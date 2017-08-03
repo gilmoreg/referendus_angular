@@ -1,6 +1,19 @@
 <li class="ref list-group-item" data-id="${ref.data._id}">
   <div class="label label-primary ref-label">{{reference.type}}</div>
-  <div class="ref-del"><i class="fa fa-trash-o" aria-hidden="true"></i></div>
+  <div class="ref-del" (click)="openModal(deleteConfirm)"><i class="fa fa-trash-o" aria-hidden="true"></i></div>
   <div class="ref-edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></div>
   <div class="ref-text" [innerHTML]="reference.html"></div>
 </li>
+
+<ng-template #deleteConfirm>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Are you sure?</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <button>Yes</button>
+    <button>No</button>
+  </div>
+</ng-template>
