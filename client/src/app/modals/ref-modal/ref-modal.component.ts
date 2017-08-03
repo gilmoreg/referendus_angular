@@ -119,12 +119,15 @@ export class RefModalComponent implements OnInit {
   }
 
   editRef(data) {
-    console.log('editing ref', data);
-    // this.bsModalRef.hide();
+    const post = this.buildJSON(data);
+    post.id = this.reference.data._id;
+    this.http.put(`/refs/${this.reference.data._id}`, post).subscribe((res) => {
+      this.store.dispatch({ type: 'SYNC' });
+      this.bsModalRef.hide();
+    });
   }
 
   onSubmit(form) {
-    console.log('onSubmit', form);
     if (form.invalid) return;
     if (this._mode === 'add') this.createRef(form.value);
     if (this._mode === 'edit') this.editRef(form.value);
