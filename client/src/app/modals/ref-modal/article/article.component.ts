@@ -1,12 +1,9 @@
-import { Component,
+import { 
+  Component,
   OnInit,
-  Output,
   ChangeDetectorRef,
-  ChangeDetectionStrategy,
-  EventEmitter } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { Store } from '@ngrx/store';
-import { HttpClient } from '@angular/common/http';
+  ChangeDetectionStrategy
+} from '@angular/core';
 
 interface Author {
   firstName: string,
@@ -35,8 +32,6 @@ interface ArticleResponse {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ArticleComponent implements OnInit {
-  @Output() close = new EventEmitter<string>();
-
   defaultAuthor = 'Murphy, Avon, J';
   defaultJournal = 'Technical Communication';
   defaultTitle = 'Review of Four Books on HTML5';
@@ -49,39 +44,12 @@ export class ArticleComponent implements OnInit {
   defaultIssue = '4';
   defaultType = 'article';
 
-  constructor(private ref: ChangeDetectorRef, private store: Store<any>, private http: HttpClient) { }
+  constructor(private ref: ChangeDetectorRef) { }
 
   ngOnInit() {
   }
 
   formChanged() {
     this.ref.detectChanges();
-  }
-
-  buildJSON(formData) {
-    // TODO make sure invalid authors value invalidates the form
-    const authors = formData.authors.split(',');
-    const author: Author = {
-      firstName: authors[1].trim(),
-      middleName: '',
-      lastName: authors[0].trim(),
-    };
-    if (authors.length >= 3) author.middleName = authors[2].trim();
-
-    const tags = formData.tags.split(',').map(t => ({ tag: t.trim() }));
-    
-    return Object.assign({}, formData, { type: 'article' }, { authors: [{ author }] }, { tags });
-  }
-
-  onSubmit(form) {
-    if (form.invalid) {
-      return;
-    }
-    // Submit form
-    const post = this.buildJSON(form.value);
-    this.http.post<ArticleResponse>('/refs', post).subscribe((res) => {
-      this.store.dispatch({ type: 'SYNC' });
-      this.close.emit();
-    });
   }
 }
