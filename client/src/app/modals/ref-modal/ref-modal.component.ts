@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 import { HttpClient } from '@angular/common/http';
 import { Store } from '@ngrx/store';
+import * as moment from 'moment';
 
 interface Author {
   firstName: string,
@@ -40,10 +41,20 @@ export class RefModalComponent implements OnInit {
       pages: new FormControl('353-356'),
     }),
     book: new FormGroup({
-      
+      author: new FormControl('Simpson, Kyle'),
+      title: new FormControl('You Don\'t Know JS: ES6 & Beyond'),
+      publisher: new FormControl('O\'Reilly'),
+      city: new FormControl('Sebastopol'),
+      year: new FormControl('2015'),
+      url: new FormControl(),
     }),
     website: new FormGroup({
-
+      url: new FormControl('https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy'),
+      title: new FormControl('Same-origin policy'),
+      siteTitle: new FormControl('Mozilla Developer Network'),
+      accessDate: new FormControl(moment(new Date()).format('YYYY-MM-DD')),
+      pubDate: new FormControl(moment(new Date('07-18-2017')).format('YYYY-MM-DD')),
+      author: new FormControl('Shepherd, Eric'),
     }),
     tags: new FormControl(''),
     notes: new FormControl('')

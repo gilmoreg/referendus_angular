@@ -5,7 +5,6 @@ import {
   ChangeDetectionStrategy
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR, FormGroupName } from '@angular/forms';
-import * as moment from 'moment';
 
 @Component({
   selector: 'app-website',

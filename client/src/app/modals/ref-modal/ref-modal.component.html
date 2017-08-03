@@ -13,8 +13,8 @@
       accept-charset="UTF-8"
     >
       <app-article *ngIf="type=='article'" formGroupName="article" (close)="bsModalRef.hide()"></app-article>
-      <!--<app-book *ngIf="type=='book'" formControlName="book" (close)="bsModalRef.hide()"></app-book>
-      <app-website *ngIf="type=='website'" formControlName="website" (close)="bsModalRef.hide()"></app-website>-->
+      <app-book *ngIf="type=='book'" formGroupName="book" (close)="bsModalRef.hide()"></app-book>
+      <app-website *ngIf="type=='website'" formGroupName="website" (close)="bsModalRef.hide()"></app-website>
       <div class="form-group">
         <label for="tags">Tags</label>
         <input
