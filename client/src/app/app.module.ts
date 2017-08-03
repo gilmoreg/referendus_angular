@@ -26,7 +26,6 @@ import { InstructionsComponent } from './main/instructions/instructions.componen
 import { ArticleComponent } from './modals/ref-modal/article/article.component';
 import { BookComponent } from './modals/ref-modal/book/book.component';
 import { WebsiteComponent } from './modals/ref-modal/website/website.component';
-import { DeleteConfirmComponent } from './main/delete-confirm/delete-confirm.component';
 import { RefModalComponent } from './modals/ref-modal/ref-modal.component';
 import { NewButtonsComponent } from './modals/ref-modal/new-buttons/new-buttons.component';
 import { NavFormatComponent } from './navbar/nav-format/nav-format.component';
@@ -44,7 +43,6 @@ import { ReferenceLiComponent } from './main/reference-li/reference-li.component
     ArticleComponent,
     BookComponent,
     WebsiteComponent,
-    DeleteConfirmComponent,
     RefModalComponent,
     NewButtonsComponent,
     NavFormatComponent,
