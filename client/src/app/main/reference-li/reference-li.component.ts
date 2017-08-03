@@ -27,7 +27,7 @@ export class ReferenceLiComponent implements OnInit {
   }
 
   deleteRef() {
-    this.http.delete('/refs', this.reference).subscribe((res) => {
+    this.http.delete(`/refs/${this.reference.data._id}`).subscribe((res) => {
       this.store.dispatch({ type: 'SYNC' });
       this.closeModal();
     });
