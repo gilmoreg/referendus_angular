@@ -1,6 +1,6 @@
 <li class="ref list-group-item" data-id="${ref.data._id}">
   <div class="label label-primary ref-label">{{reference.type}}</div>
-  <div class="ref-del" (click)="openModal(deleteConfirm)"><i class="fa fa-trash-o" aria-hidden="true"></i></div>
+  <div class="ref-del" (click)="openDeleteModal(deleteConfirm)"><i class="fa fa-trash-o" aria-hidden="true"></i></div>
   <div class="ref-edit" (click)="openEditModal()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></div>
   <div class="ref-text" [innerHTML]="reference.html"></div>
 </li>

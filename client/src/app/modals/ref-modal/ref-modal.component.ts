@@ -30,6 +30,7 @@ export class RefModalComponent implements OnInit {
   @Input()
   set mode(mode: string) {
     this._mode = mode;
+    console.log('mode', mode);
     this.ref.detectChanges();
   };
   get mode(): string { return this._mode; }
@@ -125,8 +126,8 @@ export class RefModalComponent implements OnInit {
   onSubmit(form) {
     console.log('onSubmit', form);
     if (form.invalid) return;
-    if (this.mode === 'new') this.createRef(form.value);
-    if (this.mode === 'edit') this.editRef(form.value);
+    if (this._mode === 'add') this.createRef(form.value);
+    if (this._mode === 'edit') this.editRef(form.value);
   }
 
 }
