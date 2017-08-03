@@ -57,7 +57,8 @@ export class NavbarComponent implements OnInit {
 
   public openModal() {
     // Animated set to false until I figure out why 'fade' will not remove itself
-    this.modalService.show(RefModalComponent, { animated: false });
+    this.modalRef = this.modalService.show(RefModalComponent, { animated: false });
+    this.modalRef.content['mode'] = 'add';
   }
 
 }

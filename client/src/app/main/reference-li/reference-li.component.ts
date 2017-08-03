@@ -4,6 +4,8 @@ import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 import { HttpClient } from '@angular/common/http';
 import { Store } from '@ngrx/store';
 
+import { RefModalComponent } from '../../modals/ref-modal/ref-modal.component';
+
 @Component({
   selector: 'app-reference-li',
   templateUrl: './reference-li.component.html',
@@ -18,8 +20,15 @@ export class ReferenceLiComponent implements OnInit {
   ngOnInit() {
   }
 
-  public openModal(template: TemplateRef<any>) {
+  public openDeleteModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
+  }
+
+  public openEditModal() {
+    // Animated set to false until I figure out why 'fade' will not remove itself
+    this.modalRef = this.modalService.show(RefModalComponent, { animated: false });
+    this.modalRef.content['mode'] = 'edit';
+    this.modalRef.content['reference'] = this.reference;
   }
 
   closeModal() {

@@ -24,8 +24,16 @@ interface Author {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RefModalComponent implements OnInit {
+  private _mode: string;
+
   @Input() reference;
-  @Input() mode = 'new';
+  @Input()
+  set mode(mode: string) {
+    this._mode = mode;
+    this.ref.detectChanges();
+  };
+  get mode(): string { return this._mode; }
+
   @Output() close = new EventEmitter<string>();
   type = 'article';
 
@@ -66,8 +74,7 @@ export class RefModalComponent implements OnInit {
     private store: Store<any>,
     private fb: FormBuilder) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   changeType(type) {
     this.type = type;

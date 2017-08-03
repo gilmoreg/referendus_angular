@@ -1,6 +1,7 @@
 <div>
   <div class="modal-header">
     <button type="button" class="close" aria-label="Close" (click)="bsModalRef.hide()">
+      {{ mode }}
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -41,7 +42,7 @@
       </div>
       <div class="form-group submit submit-row">
         <button *ngIf="mode=='new'" type="submit" class="btn btn-warning new-button" name="submitNew">Add</button>
-        <button *ngIf="mode=='edit'" type="submit" class="btn btn-warning new-button" name="edit">Edit</button>
+        <button *ngIf="mode=='edit'" type="submit" class="btn btn-warning new-button" name="edit">Save</button>
       </div>
     </form>
   </div>
