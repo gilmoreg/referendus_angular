@@ -81,7 +81,7 @@ export class RefModalComponent implements OnInit {
       middleName: '',
       lastName: author[0].trim(),
     }
-    if (authors.length >= 3) builtAuthor.middleName = author[2].trim();
+    if (author.length >= 3) builtAuthor.middleName = author[2].trim();
     return builtAuthor;
   }
 
