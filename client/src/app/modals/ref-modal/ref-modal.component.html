@@ -5,19 +5,43 @@
     </button>
   </div>
   <div class="modal-body">
-    <app-new-buttons (typeChanged)="changeType($event)"></app-new-buttons>
+    <app-new-buttons *ngIf="mode=='new'" (typeChanged)="changeType($event)"></app-new-buttons>
     <form
       (ngSubmit)="onSubmit(form)"
-      #form="ngForm"
+      [formGroup]="form"
       role="form"
       accept-charset="UTF-8"
     >
-      <app-article *ngIf="type=='article'" (close)="bsModalRef.hide()"></app-article>
-      <app-book *ngIf="type=='book'" (close)="bsModalRef.hide()"></app-book>
-      <app-website *ngIf="type=='website'" (close)="bsModalRef.hide()"></app-website>
+      <app-article *ngIf="type=='article'" formGroupName="article" (close)="bsModalRef.hide()"></app-article>
+      <!--<app-book *ngIf="type=='book'" formControlName="book" (close)="bsModalRef.hide()"></app-book>
+      <app-website *ngIf="type=='website'" formControlName="website" (close)="bsModalRef.hide()"></app-website>-->
+      <div class="form-group">
+        <label for="tags">Tags</label>
+        <input
+          formControlName="tags"
+          class="form-control"
+          type="text"
+          id="tags"
+          name="tags"
+          placeholder="Separate by commas"
+          #tags
+        >
+      </div>
+      <div class="form-group">
+        <label for="notes">Notes</label>
+        <textarea
+          formControlName="notes"
+          class="form-control"
+          type="text"
+          id="notes"
+          name="notes"
+          rows="3"
+          #notes>
+        </textarea>
+      </div>
       <div class="form-group submit submit-row">
-        <button *ngIf="mode='new'" type="submit" class="btn btn-warning new-button" name="submitNew">Add</button>
-        <button *ngIf="mode='edit'" type="submit" class="btn btn-warning new-button" name="edit">Edit</button>
+        <button *ngIf="mode=='new'" type="submit" class="btn btn-warning new-button" name="submitNew">Add</button>
+        <button *ngIf="mode=='edit'" type="submit" class="btn btn-warning new-button" name="edit">Edit</button>
       </div>
     </form>
   </div>

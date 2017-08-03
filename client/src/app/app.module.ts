@@ -2,6 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
@@ -52,6 +53,7 @@ import { ReferenceLiComponent } from './main/reference-li/reference-li.component
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     StoreModule.provideStore({
       referencesReducer,
       uiReducer,

@@ -1,40 +1,96 @@
-<div class="form-group">
-  <label for="author">* Author</label>
-  <input (change)="formChanged()" [ngModel]="defaultAuthor" #author="ngModel" class="form-control" type="text" id="authors" name="authors" placeholder="Last, First, Middle" required>
-  <span class="help-block" *ngIf="author.invalid && author.touched">Please enter at least one author, last name first!</span>
-</div>
-<div class="form-group">
-  <label for="title">* Title</label>
-  <input #title="ngModel" [ngModel]="defaultTitle" class="form-control" type="text" id="title" name="title" required>
-  <span class="help-block" *ngIf="title.invalid && title.touched">Please enter an article title!</span>
-</div>
-<div class="form-group">
-  <label for="journal">* Journal</label>
-  <input (change)="formChanged()" #journal="ngModel" [ngModel]="defaultJournal" class="form-control" type="text" id="journal" name="journal" required>
-  <span class="help-block" *ngIf="journal.invalid && journal.touched">Please enter a journal title!</span>
-</div>
-<div class="form-group">
-  <label for="volume">* Volume</label>
-  <input (change)="formChanged()" #volume="ngModel" [ngModel]="defaultVolume" class="form-control" type="text" id="volume" name="volume" required>
-  <span class="help-block" *ngIf="volume.invalid && volume.touched">Please enter a volume number!</span>
-</div>
-<div class="form-group">
-  <label for="issue">* Issue</label>
-  <input (change)="formChanged()" #issue="ngModel" [ngModel]="defaultIssue" class="form-control" type="text" id="issue" name="issue" required>
-  <span class="help-block" *ngIf="issue.invalid && issue.touched">Please enter an issue number!</span>
-</div>
-<div class="form-group">
-  <label for="year">* Year</label>
-  <input (change)="formChanged()" #year="ngModel" [ngModel]="defaultYear" class="form-control" type="number" min="1000" id="year" name="year" required>
-  <span class="help-block" *ngIf="year.invalid && year.touched">Please enter a publication year!</span>
-  <label for="pages">Pages</label>
-  <input (change)="formChanged()" #pages="ngModel" [ngModel]="defaultPages" class="form-control" type="text" id="pages" name="pages" required>
-</div>
-<div class="form-group">
-  <label for="tags">Tags</label>
-  <input #tags="ngModel" [ngModel]="defaultTags" class="form-control" type="text" id="tags" name="tags" placeholder="Separate by commas">
-</div>
-<div class="form-group">
-  <label for="notes">Notes</label>
-  <textarea #notes="ngModel" [ngModel]="defaultNotes" class="form-control" type="text" id="notes" name="notes" rows="3"></textarea>
+<div [formGroup]="formGroupName.control">
+  <div class="form-group">
+    <label for="authors">* Author</label>
+    <input
+      (change)="formChanged()"
+      formControlName="author"
+      class="form-control"
+      type="text"
+      id="authors"
+      name="authors"
+      placeholder="Last, First, Middle"
+      #author
+      required
+    >
+    <span class="help-block" *ngIf="author.invalid && author.touched">Please enter at least one author, last name first!</span>
+  </div>
+  <div class="form-group">
+    <label for="title">* Title</label>
+    <input
+      (change)="formChanged()"
+      formControlName="title"
+      class="form-control"
+      type="text"
+      id="title"
+      name="title"
+      #title
+      required
+    >
+    <span class="help-block" *ngIf="title.invalid && title.touched">Please enter an article title!</span>
+  </div>
+  <div class="form-group">
+    <label for="journal">* Journal</label>
+    <input
+      (change)="formChanged()"
+      formControlName="journal"
+      class="form-control"
+      type="text"
+      id="journal"
+      name="journal"
+      #journal
+      required
+    >
+    <span class="help-block" *ngIf="journal.invalid && journal.touched">Please enter a journal title!</span>
+  </div>
+  <div class="form-group">
+    <label for="volume">* Volume</label>
+    <input
+      (change)="formChanged()"
+      formControlName="volume"
+      class="form-control"
+      type="text"
+      id="volume"
+      name="volume"
+      #volume
+      required
+    >
+    <span class="help-block" *ngIf="volume.invalid && volume.touched">Please enter a volume number!</span>
+  </div>
+  <div class="form-group">
+    <label for="issue">* Issue</label>
+    <input
+      (change)="formChanged()"
+      formControlName="issue"
+      class="form-control"
+      type="text"
+      id="issue"
+      name="issue"
+      #issue
+      required
+    >
+    <span class="help-block" *ngIf="issue.invalid && issue.touched">Please enter an issue number!</span>
+  </div>
+  <div class="form-group">
+    <label for="year">* Year</label>
+    <input
+      (change)="formChanged()"
+      formControlName="year"
+      class="form-control"
+      type="text"
+      id="year"
+      name="year"
+      #year
+      required
+    >
+    <span class="help-block" *ngIf="year.invalid && year.touched">Please enter a publication year!</span>
+    <label for="pages">Pages</label>
+    <input
+      (change)="formChanged()"
+      formControlName="pages"
+      class="form-control"
+      type="text"
+      id="pages"
+      name="pages"
+    >
+  </div>
 </div>
