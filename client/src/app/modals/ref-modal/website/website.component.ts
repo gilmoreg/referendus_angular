@@ -1,30 +1,20 @@
-import { Component,
+import { 
+  Component,
   OnInit,
   ChangeDetectorRef,
-  ChangeDetectionStrategy,
+  ChangeDetectionStrategy
 } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { Store } from '@ngrx/store';
-import { HttpClient } from '@angular/common/http';
+import { NG_VALUE_ACCESSOR, FormGroupName } from '@angular/forms';
 import * as moment from 'moment';
 
 @Component({
   selector: 'app-website',
   templateUrl: './website.component.html',
   styleUrls: ['./website.component.css'],
+  providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: WebsiteComponent, multi: true }],
 })
 export class WebsiteComponent implements OnInit {
-  defaultURL = 'https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy';
-  defaultTitle = 'Same-origin policy';
-  defaultSiteTitle = 'Mozilla Developer Network';
-  defaultAccessDate = moment().format('YYYY-MM-DD');
-  defaultPubDate = moment(new Date('09/28/2016')).format('YYYY-MM-DD');
-  defaultAuthor = 'Ruderman, Jesse';
-  defaultTags = 'JavaScript';
-  defaultNotes = '';
-  defaultType = 'website';
-
-  constructor(private ref: ChangeDetectorRef) { }
+  constructor(private ref: ChangeDetectorRef, public formGroupName: FormGroupName) { }
 
   ngOnInit() {
   }
