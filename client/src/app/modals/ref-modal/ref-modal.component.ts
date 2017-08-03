@@ -30,7 +30,6 @@ export class RefModalComponent implements OnInit {
   @Input()
   set mode(mode: string) {
     this._mode = mode;
-    console.log('mode', mode);
     this.ref.detectChanges();
   };
   get mode(): string { return this._mode; }
@@ -115,12 +114,13 @@ export class RefModalComponent implements OnInit {
     const post = this.buildJSON(data);
     this.http.post('/refs', post).subscribe((res) => {
       this.store.dispatch({ type: 'SYNC' });
-      this.close.emit();
+      this.bsModalRef.hide();
     });
   }
 
   editRef(data) {
     console.log('editing ref', data);
+    // this.bsModalRef.hide();
   }
 
   onSubmit(form) {
