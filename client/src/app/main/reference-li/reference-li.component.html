@@ -1,5 +1,12 @@
-<div class="ref" data-id="${ref.data._id}">
-  <div class="label label-primary ref-label">{{reference.data.type.toUpperCase()}}</div>
+<div class="ref" data-id="${reference.data._id}">
+  <div
+    class="label ref-label"
+    [ngClass]="{
+        'label-primary': reference.data.type === 'article',
+        'label-danger': reference.data.type === 'book',
+        'label-success': reference.data.type === 'website'
+      }"
+  >{{reference.data.type.toUpperCase()}}</div>
   <div class="ref-del" (click)="openDeleteModal(deleteConfirm)"><i class="fa fa-trash-o" aria-hidden="true"></i></div>
   <div class="ref-edit" (click)="openEditModal()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></div>
   <div class="ref-text" [innerHTML]="reference.html"></div>
