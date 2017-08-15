@@ -4,6 +4,10 @@
   margin: 0 auto;
 }
 
+.ref-label {
+  float: left;
+}
+
 .list-group .ref-label {
   float: left;
   width: 55px;
