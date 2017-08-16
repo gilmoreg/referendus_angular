@@ -1,0 +1,11 @@
+sudo: required
+language: node_js
+node_js: node
+services:
+- docker
+before_script:
+- npm install -g angular-cli
+after_success: bash ./deploy.sh
+branches:
+  only:
+      - master
