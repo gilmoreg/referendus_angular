@@ -8,7 +8,7 @@ COPY ./package.json src/
 RUN cd src && npm install
 RUN mkdir src/client
 COPY ./client/package.json src/client/
-RUN cd client && npm install
+RUN cd src/client && npm install
 
 COPY . /src
 WORKDIR src/
