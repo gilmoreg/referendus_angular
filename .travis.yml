@@ -3,6 +3,7 @@ language: node_js
 node_js: node
 services:
 - docker
+- mongo
 before_script:
 - npm install -g @angular/cli
 after_success: bash ./deploy.sh
