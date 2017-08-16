@@ -73,7 +73,6 @@ export class NavbarComponent implements OnInit {
 
   copy() {
     let collection = [];
-    console.table(this.references);
     if (this.activeTab === 'all') collection = this.references;
     else collection = this.references.filter(ref => ref.data.type === this.activeTab);
     let text = '';
