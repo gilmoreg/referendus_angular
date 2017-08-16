@@ -1,7 +1,7 @@
-/* global describe, it, expect, beforeEach, beforeAll, afterAll */
 /**
  * @jest-environment node
  */
+/* global describe, it, expect, beforeEach, beforeAll, afterAll */
 const chai = require('chai');
 chai.use(require('chai-http'));
 const mongoose = require('mongoose');
