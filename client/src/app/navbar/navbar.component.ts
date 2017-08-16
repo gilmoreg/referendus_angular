@@ -15,6 +15,8 @@ import { RefModalComponent } from '../modals/ref-modal/ref-modal.component';
 })
 export class NavbarComponent implements OnInit {
   loggedIn$: Observable<boolean>;
+  references$: Observable<any>;
+  activeTab$: Observable<any>;
   
   public modalRef: BsModalRef;
   private references;
@@ -24,8 +26,14 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     this.loggedIn$ = this.store.select(state => state.uiReducer.loggedIn);
-    this.references = this.store.select(state => state.referencesReducer.references);
-    this.activeTab = this.store.select(state => state.uiReducer.activeTab);
+    this.references$ = this.store.select(state => state.referencesReducer.references);
+    this.activeTab$ = this.store.select(state => state.uiReducer.activeTab);
+    this.references$.subscribe(references => {
+      this.references = references;
+    });
+    this.activeTab$.subscribe(activeTab => {
+      this.activeTab = activeTab;
+    });
   }
 
   // Collapsable nav
@@ -65,6 +73,7 @@ export class NavbarComponent implements OnInit {
 
   copy() {
     let collection = [];
+    console.table(this.references);
     if (this.activeTab === 'all') collection = this.references;
     else collection = this.references.filter(ref => ref.data.type === this.activeTab);
     let text = '';
