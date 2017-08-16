@@ -54,7 +54,7 @@ describe('API Integration Tests', () => {
   it('should log out', async (done) => {
     const res = await chai.request(app)
       .get('/logout');
-    expect(res.status).toEqual(200);
+    expect(res.status).toEqual(204);
     done();
   });
 

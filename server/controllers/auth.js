@@ -3,16 +3,17 @@ const User = require('../models/User');
 
 exports.login = passport.authenticate('local');
 
-exports.loginStatus = (req, res) => {
-  if (req.user) res.status(200).json({ message: 'Login successful', user: req.user.username });
+exports.loginStatus = async (req, res) => {
+  if (req.user) return res.status(200).json({ message: 'Login successful', user: req.user.username });
+  return res.status(200).json({ message: 'Not logged in' });
 };
 
-exports.logout = (req, res) => {
+exports.logout = async (req, res) => {
   req.logout();
-  res.redirect('/');
+  res.status(204).end();
 };
 
-exports.check = (req, res) => {
+exports.check = async (req, res) => {
   if (req.isAuthenticated()) return res.status(200).json({ message: 'Logged in', user: req.user.username });
   return res.status(200).json({ message: 'Not logged in' });
 };
