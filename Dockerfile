@@ -2,7 +2,7 @@ FROM node:7.10
 LABEL maintainer="Grayson Gilmore (gilmoreg@live.com)"
 
 # Heroku requires angular CLI be installed globally
-RUN npm install -g --quiet @angular/cli@latest
+RUN npm install -g --quiet @angular/cli@latest concurrently nodemon
 
 # Prevent npm install from running unless package.json changes
 COPY ./package.json src/
