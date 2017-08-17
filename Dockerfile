@@ -11,6 +11,7 @@ COPY ./client/package.json src/client/
 RUN cd src/client && npm install
 
 COPY . /src
+COPY ./client/src/bootswatch.min.css /src/client/node_modules/bootstrap/dist/css/bootswatch.min.css
 WORKDIR src/
 
 CMD ["npm", "start"]
