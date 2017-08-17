@@ -4,8 +4,6 @@ node_js: node
 services:
 - docker
 - mongodb
-before_script:
-- npm install -g @angular/cli
 after_success: bash ./deploy.sh
 branches:
   only:
