@@ -1,7 +1,7 @@
 FROM node:7.10
 LABEL maintainer="Grayson Gilmore (gilmoreg@live.com)"
 
-RUN npm install @angular/cli -g
+RUN npm install @angular/cli -g --quiet
 
 # Prevent npm install from running unless package.json changes
 COPY ./package.json src/
