@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"npm run server\" \"npm run build\" ",
+    "start": "npm run server",
     "server": "cd server && nodemon server.js",
     "build": "cd client && ng build --prod",
     "dev": "concurrently \"npm run devbuild\" \"nodemon --inspect server/server.js\" ",
