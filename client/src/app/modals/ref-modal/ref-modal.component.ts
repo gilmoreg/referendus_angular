@@ -24,7 +24,7 @@ interface Author {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RefModalComponent implements OnInit {
-  private _mode: string;
+  public _mode: string;
 
   @Input() reference;
   @Input()
