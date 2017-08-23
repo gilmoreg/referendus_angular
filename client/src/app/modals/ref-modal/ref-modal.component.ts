@@ -6,6 +6,7 @@ import { Component,
   ChangeDetectionStrategy,
   EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 import { HttpClient } from '@angular/common/http';
 import { Store } from '@ngrx/store';
@@ -25,6 +26,7 @@ interface Author {
 })
 export class RefModalComponent implements OnInit {
   public _mode: string;
+  public type: string;
 
   @Input() reference;
   @Input()
@@ -35,7 +37,7 @@ export class RefModalComponent implements OnInit {
   get mode(): string { return this._mode; }
 
   @Output() close = new EventEmitter<string>();
-  type = 'article';
+  // type = 'article';
 
   // https://github.com/angular/angular/issues/9600#issuecomment-278915107
   public form = new FormGroup({
@@ -69,6 +71,7 @@ export class RefModalComponent implements OnInit {
   });
   
   constructor(public bsModalRef: BsModalRef,
+    public bsModalServce: BsModalService,
     private ref: ChangeDetectorRef,
     private http: HttpClient,
     private store: Store<any>,

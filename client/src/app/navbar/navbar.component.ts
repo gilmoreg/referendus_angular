@@ -105,6 +105,7 @@ export class NavbarComponent implements OnInit {
     // Animated set to false until I figure out why 'fade' will not remove itself
     this.modalRef = this.modalService.show(RefModalComponent, { animated: false });
     this.modalRef.content['mode'] = 'add';
+    this.modalRef.content['type'] = 'article';
   }
 
 }

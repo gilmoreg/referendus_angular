@@ -12,10 +12,11 @@
       role="form"
       accept-charset="UTF-8"
     >
+      {{type || 'none'}}
       <app-article *ngIf="type=='article'" formGroupName="article" (close)="bsModalRef.hide()"></app-article>
       <app-book *ngIf="type=='book'" formGroupName="book" (close)="bsModalRef.hide()"></app-book>
       <app-website *ngIf="type=='website'" formGroupName="website" (close)="bsModalRef.hide()"></app-website>
-      <div class="form-group">
+      <div *ngIf="type" class="form-group">
         <label for="tags">Tags</label>
         <input
           formControlName="tags"
@@ -27,7 +28,7 @@
           #tags
         >
       </div>
-      <div class="form-group">
+      <div *ngIf="type" class="form-group">
         <label for="notes">Notes</label>
         <textarea
           formControlName="notes"
@@ -39,7 +40,7 @@
           #notes>
         </textarea>
       </div>
-      <div class="form-group submit submit-row">
+      <div *ngIf="type" class="form-group submit submit-row">
         <button *ngIf="_mode=='add'" type="submit" class="btn btn-warning new-button" name="submitNew">Add</button>
         <button *ngIf="_mode=='edit'" type="submit" class="btn btn-warning new-button" name="edit">Save</button>
       </div>
