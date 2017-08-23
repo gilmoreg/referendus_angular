@@ -5,14 +5,13 @@
     </button>
   </div>
   <div class="modal-body">
-    <app-new-buttons *ngIf="_mode=='add'" (typeChanged)="changeType($event)"></app-new-buttons>
+    <app-new-buttons *ngIf="mode=='add'" (typeChanged)="changeType($event)"></app-new-buttons>
     <form
       (ngSubmit)="onSubmit(form)"
       [formGroup]="form"
       role="form"
       accept-charset="UTF-8"
     >
-      {{type || 'none'}}
       <app-article *ngIf="type=='article'" formGroupName="article" (close)="bsModalRef.hide()"></app-article>
       <app-book *ngIf="type=='book'" formGroupName="book" (close)="bsModalRef.hide()"></app-book>
       <app-website *ngIf="type=='website'" formGroupName="website" (close)="bsModalRef.hide()"></app-website>
@@ -41,8 +40,8 @@
         </textarea>
       </div>
       <div *ngIf="type" class="form-group submit submit-row">
-        <button *ngIf="_mode=='add'" type="submit" class="btn btn-warning new-button" name="submitNew">Add</button>
-        <button *ngIf="_mode=='edit'" type="submit" class="btn btn-warning new-button" name="edit">Save</button>
+        <button *ngIf="mode=='add'" type="submit" class="btn btn-warning new-button" name="submitNew">Add</button>
+        <button *ngIf="mode=='edit'" type="submit" class="btn btn-warning new-button" name="edit">Save</button>
       </div>
     </form>
   </div>

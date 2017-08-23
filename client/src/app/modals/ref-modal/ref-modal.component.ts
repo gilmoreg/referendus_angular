@@ -5,6 +5,7 @@ import { Component,
   ChangeDetectorRef,
   ChangeDetectionStrategy,
   EventEmitter } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
@@ -25,19 +26,12 @@ interface Author {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RefModalComponent implements OnInit {
-  public _mode: string;
+  private modalProperties$: Observable<string>;
+  public mode: string;
   public type: string;
 
   @Input() reference;
-  @Input()
-  set mode(mode: string) {
-    this._mode = mode;
-    this.ref.detectChanges();
-  };
-  get mode(): string { return this._mode; }
-
   @Output() close = new EventEmitter<string>();
-  // type = 'article';
 
   // https://github.com/angular/angular/issues/9600#issuecomment-278915107
   public form = new FormGroup({
@@ -77,11 +71,26 @@ export class RefModalComponent implements OnInit {
     private store: Store<any>,
     private fb: FormBuilder) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.modalProperties$ = this.store.select(state => state.uiReducer.modal);
+    this.modalProperties$.subscribe(props => {
+      console.log('modalProps', props);
+      this.mode = props['mode'];
+      this.type = props['type'];
+      this.ref.detectChanges();
+    });
+  }
 
   changeType(type) {
-    this.type = type;
-    this.ref.detectChanges();
+    this.store.dispatch({
+      type: 'SET_MODAL_PROPS',
+      payload: { 
+        modal: {
+          mode: this.mode,
+          type,
+       },
+      },
+    });
   }
 
   buildAuthor(authors) {
@@ -132,8 +141,8 @@ export class RefModalComponent implements OnInit {
 
   onSubmit(form) {
     if (form.invalid) return;
-    if (this._mode === 'add') this.createRef(form.value);
-    if (this._mode === 'edit') this.editRef(form.value);
+    if (this.mode === 'add') this.createRef(form.value);
+    if (this.mode === 'edit') this.editRef(form.value);
   }
 
 }
