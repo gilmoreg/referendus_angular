@@ -27,10 +27,16 @@ export class ReferenceLiComponent implements OnInit {
   public openEditModal() {
     // Animated set to false until I figure out why 'fade' will not remove itself
     this.modalRef = this.modalService.show(RefModalComponent, { animated: false });
-    // TODO these never have any effect - refmodal just takes its defaults
-    this.modalRef.content['mode'] = 'edit';
-    this.modalRef.content['reference'] = this.reference;
-    this.modalRef.content['type'] = this.reference.type;
+    this.store.dispatch({
+      type: 'SET_MODAL_PROPS',
+      payload: {
+        modal: {
+          mode: 'edit',
+          reference: this.reference,
+          type: this.reference.data.type,
+       },
+      },
+    });
   }
 
   closeModal() {
