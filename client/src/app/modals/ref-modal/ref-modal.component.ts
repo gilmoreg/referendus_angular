@@ -55,7 +55,7 @@ export class RefModalComponent implements OnInit {
   // https://github.com/angular/angular/issues/9600#issuecomment-278915107
   generateArticle(article = {}) {
     return new FormGroup({
-      author: new FormControl(article['author'] /*|| 'Murphy, Avon, J'*/),
+      author: new FormControl(article['author'] || 'Murphy, Avon, J'),
       title: new FormControl(article['title'] || 'Review of Four Books on HTML5'),
       journal: new FormControl(article['journal'] || 'Technical Communication'),
       volume: new FormControl(article['volume'] || '58'),
