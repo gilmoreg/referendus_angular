@@ -110,6 +110,7 @@ export class NavbarComponent implements OnInit {
         modal: {
           mode: 'add',
           type: 'article',
+          reference: {},
        },
       },
     });

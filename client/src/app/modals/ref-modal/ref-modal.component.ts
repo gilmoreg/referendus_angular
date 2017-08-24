@@ -29,41 +29,11 @@ export class RefModalComponent implements OnInit {
   private modalProperties$: Observable<string>;
   public mode: string;
   public type: string;
+  public reference: any;
+  public form: any;
 
-  @Input() reference;
   @Output() close = new EventEmitter<string>();
 
-  // https://github.com/angular/angular/issues/9600#issuecomment-278915107
-  public form = new FormGroup({
-    article: new FormGroup({
-      author: new FormControl('Murphy, Avon, J'),
-      title: new FormControl('Review of Four Books on HTML5'),
-      journal: new FormControl('Technical Communication'),
-      volume: new FormControl('58'),
-      issue: new FormControl('4'),
-      year: new FormControl('2011'),
-      pages: new FormControl('353-356'),
-    }),
-    book: new FormGroup({
-      author: new FormControl('Simpson, Kyle'),
-      title: new FormControl('You Don\'t Know JS: ES6 & Beyond'),
-      publisher: new FormControl('O\'Reilly'),
-      city: new FormControl('Sebastopol'),
-      year: new FormControl('2015'),
-      url: new FormControl(),
-    }),
-    website: new FormGroup({
-      url: new FormControl('https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy'),
-      title: new FormControl('Same-origin policy'),
-      siteTitle: new FormControl('Mozilla Developer Network'),
-      accessDate: new FormControl(moment(new Date()).format('YYYY-MM-DD')),
-      pubDate: new FormControl(moment(new Date('07-18-2017')).format('YYYY-MM-DD')),
-      author: new FormControl('Shepherd, Eric'),
-    }),
-    tags: new FormControl(''),
-    notes: new FormControl('')
-  });
-  
   constructor(public bsModalRef: BsModalRef,
     public bsModalServce: BsModalService,
     private ref: ChangeDetectorRef,
@@ -74,19 +44,83 @@ export class RefModalComponent implements OnInit {
   ngOnInit() {
     this.modalProperties$ = this.store.select(state => state.uiReducer.modal);
     this.modalProperties$.subscribe(props => {
-      console.log('modalProps', props);
       this.mode = props['mode'];
       this.type = props['type'];
+      this.reference = props['reference'];
+      this.generateFormData(this.reference);
+      console.log(this.form);
       this.ref.detectChanges();
     });
+  }
+
+  // https://github.com/angular/angular/issues/9600#issuecomment-278915107
+  generateArticle(article = {}) {
+    return new FormGroup({
+      author: new FormControl(article['author'] || 'Murphy, Avon, J'),
+      title: new FormControl(article['title'] || 'Review of Four Books on HTML5'),
+      journal: new FormControl(article['journal'] || 'Technical Communication'),
+      volume: new FormControl(article['volume'] || '58'),
+      issue: new FormControl(article['issue'] || '4'),
+      year: new FormControl(article['year'] || '2011'),
+      pages: new FormControl(article['pages'] || '353-356'),
+    });
+  }
+
+  generateBook(book = {}) {
+    return new FormGroup({
+      author: new FormControl(book['author'] || 'Simpson, Kyle'),
+      title: new FormControl(book['title'] || 'You Don\'t Know JS: ES6 & Beyond'),
+      publisher: new FormControl(book['publisher'] || 'O\'Reilly'),
+      city: new FormControl(book['city'] || 'Cambridge'),
+      year: new FormControl(book['year'] || '2015'),
+      url: new FormControl(book['url'] || ''),
+    });
+  }
+
+  generateWebsite(site = {}) {
+    return new FormGroup({
+      url: new FormControl(site['url'] ||
+       'https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy'),
+      title: new FormControl(site['title'] || 'Same-origin policy'),
+      siteTitle: new FormControl(site['siteTitle'] || 'Mozilla Developer Network'),
+      // TODO these don't work in Firefox
+      accessDate: new FormControl(site['accessDate'] ||
+        moment(new Date()).format('YYYY-MM-DD')),
+      pubDate: new FormControl(site['pubDate'] ||
+        moment(new Date('07-18-2017')).format('YYYY-MM-DD')),
+      author: new FormControl(site['author'] || 'Shepherd, Eric'),
+    });
+  }
+
+  generateFormData(reference) {
+    let article: FormGroup = this.generateArticle();
+    let book: FormGroup = this.generateBook();
+    let website: FormGroup = this.generateWebsite();;
+    
+    switch (reference.type) {
+      case 'article': article = this.generateArticle(reference); break;
+      case 'book': book = this.generateBook(reference); break;
+      case 'website': website = this.generateWebsite(reference); break;
+      default: console.error('generateFormData: Unsupported type');
+    }
+
+    this.form = new FormGroup({
+      article,
+      book,
+      website,
+      tags: new FormControl(reference['tags'] || ''),
+      notes: new FormControl(reference['notes'] || ''),
+    });
+    this.ref.detectChanges();
   }
 
   changeType(type) {
     this.store.dispatch({
       type: 'SET_MODAL_PROPS',
-      payload: { 
+      payload: {
         modal: {
           mode: this.mode,
+          reference: this.reference,
           type,
        },
       },

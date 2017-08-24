@@ -16,6 +16,7 @@ interface State {
   modal: {
     type: string,
     mode: string,
+    reference: any,
   }
   user: string,
 }
@@ -28,6 +29,7 @@ const initialState = {
   modal: {
     type: '',
     mode: '',
+    reference: {},
   },
   user:<string> '',
 }
