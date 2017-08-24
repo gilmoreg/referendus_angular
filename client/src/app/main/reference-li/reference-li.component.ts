@@ -32,7 +32,7 @@ export class ReferenceLiComponent implements OnInit {
       payload: {
         modal: {
           mode: 'edit',
-          reference: this.reference,
+          reference: this.reference.data,
           type: this.reference.data.type,
        },
       },

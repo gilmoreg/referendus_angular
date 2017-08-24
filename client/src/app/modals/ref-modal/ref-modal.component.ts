@@ -48,7 +48,6 @@ export class RefModalComponent implements OnInit {
       this.type = props['type'];
       this.reference = props['reference'];
       this.generateFormData(this.reference);
-      console.log(this.form);
       this.ref.detectChanges();
     });
   }
@@ -56,7 +55,7 @@ export class RefModalComponent implements OnInit {
   // https://github.com/angular/angular/issues/9600#issuecomment-278915107
   generateArticle(article = {}) {
     return new FormGroup({
-      author: new FormControl(article['author'] || 'Murphy, Avon, J'),
+      author: new FormControl(article['author'] /*|| 'Murphy, Avon, J'*/),
       title: new FormControl(article['title'] || 'Review of Four Books on HTML5'),
       journal: new FormControl(article['journal'] || 'Technical Communication'),
       volume: new FormControl(article['volume'] || '58'),
@@ -95,20 +94,35 @@ export class RefModalComponent implements OnInit {
   generateFormData(reference) {
     let article: FormGroup = this.generateArticle();
     let book: FormGroup = this.generateBook();
-    let website: FormGroup = this.generateWebsite();;
-    
-    switch (reference.type) {
-      case 'article': article = this.generateArticle(reference); break;
-      case 'book': book = this.generateBook(reference); break;
-      case 'website': website = this.generateWebsite(reference); break;
-      default:
-    }
+    let website: FormGroup = this.generateWebsite();
+    let tags: string = '';
 
+    if (reference && reference['authors']) {
+      // TODO maybe break this out into a function
+      const author = reference['authors'][0].author;
+      reference['author'] = `${author.lastName}, ${author.firstName}${author.middleName ? ', ' : ''}${author.middleName ? author.middleName : ''}`;
+    }
+    
+    if (reference) {
+      switch (reference.type) {
+        case 'article': article = this.generateArticle(reference); break;
+        case 'book': book = this.generateBook(reference); break;
+        case 'website': website = this.generateWebsite(reference); break;
+        default:
+      }
+      if (reference['tags']) {
+        reference['tags'].forEach(t => {
+          if (t.tag !== '') tags += `${t.tag}, `;
+        });
+        tags = tags.slice(-2); // remove final comma and space
+      }
+    }
+    
     this.form = new FormGroup({
       article,
       book,
       website,
-      tags: new FormControl(reference['tags'] || ''),
+      tags: new FormControl(tags || ''),
       notes: new FormControl(reference['notes'] || ''),
     });
     this.ref.detectChanges();
@@ -166,9 +180,19 @@ export class RefModalComponent implements OnInit {
 
   editRef(data) {
     const post = this.buildJSON(data);
-    post.id = this.reference.data._id;
-    this.http.put(`/refs/${this.reference.data._id}`, post).subscribe((res) => {
+    post.id = this.reference._id;
+    this.http.put(`/refs/${this.reference._id}`, post).subscribe((res) => {
       this.store.dispatch({ type: 'SYNC' });
+      this.store.dispatch({
+      type: 'SET_MODAL_PROPS',
+      payload: {
+        modal: {
+          mode: this.mode,
+          reference: post,
+          type: this.type,
+       },
+      },
+    });
       this.bsModalRef.hide();
     });
   }
