@@ -101,7 +101,7 @@ export class RefModalComponent implements OnInit {
       case 'article': article = this.generateArticle(reference); break;
       case 'book': book = this.generateBook(reference); break;
       case 'website': website = this.generateWebsite(reference); break;
-      default: console.error('generateFormData: Unsupported type');
+      default:
     }
 
     this.form = new FormGroup({
