@@ -77,16 +77,21 @@ export class RefModalComponent implements OnInit {
   }
 
   generateWebsite(site = {}) {
+    let accessDate: Date;
+    let pubDate: Date;
+    if (site['accessDate']) accessDate = new Date(site['accessDate']);
+    if (site['pubDate']) pubDate = new Date(site['pubDate']);
+    console.log('generateWebsite', site, accessDate, pubDate);
     return new FormGroup({
       url: new FormControl(site['url'] ||
        'https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy'),
       title: new FormControl(site['title'] || 'Same-origin policy'),
       siteTitle: new FormControl(site['siteTitle'] || 'Mozilla Developer Network'),
       // TODO these don't work in Firefox
-      accessDate: new FormControl(site['accessDate'] ||
-        moment(new Date()).format('YYYY-MM-DD')),
-      pubDate: new FormControl(site['pubDate'] ||
-        moment(new Date('07-18-2017')).format('YYYY-MM-DD')),
+      accessDate: new FormControl(accessDate || new Date()),
+        /* moment(new Date()).format('YYYY-MM-DD')), */
+      pubDate: new FormControl(pubDate || new Date()),
+        /* moment(new Date('07-18-2017')).format('YYYY-MM-DD')), */
       author: new FormControl(site['author'] || 'Shepherd, Eric'),
     });
   }
@@ -154,6 +159,7 @@ export class RefModalComponent implements OnInit {
 
   buildJSON(formData) {
     // TODO make sure invalid authors value invalidates the form
+    console.log('buildJSON', formData);
     let author: Author;
     let data: any;
     switch (this.type) {
@@ -165,6 +171,8 @@ export class RefModalComponent implements OnInit {
     data.tags = formData.tags.split(',').map(t => ({ tag: t.trim() }));
     data.notes = formData.notes;
     data.type = this.type;
+    if (data.accessDate) data.accessDate = data.accessDate.formatted;
+    if (data.pubDate) data.pubDate = data.pubDate.formatted;
     author = this.buildAuthor(data.author);
     if (author) return Object.assign({}, data, { authors: [{ author }] });
     return data;
