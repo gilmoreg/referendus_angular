@@ -192,15 +192,15 @@ export class RefModalComponent implements OnInit {
     this.http.put(`/refs/${this.reference._id}`, post).subscribe((res) => {
       this.store.dispatch({ type: 'SYNC' });
       this.store.dispatch({
-      type: 'SET_MODAL_PROPS',
-      payload: {
-        modal: {
-          mode: this.mode,
-          reference: post,
-          type: this.type,
-       },
-      },
-    });
+        type: 'SET_MODAL_PROPS',
+        payload: {
+          modal: {
+            mode: this.mode,
+            reference: post,
+            type: this.type,
+          },
+        },
+      });
       this.bsModalRef.hide();
     });
   }
