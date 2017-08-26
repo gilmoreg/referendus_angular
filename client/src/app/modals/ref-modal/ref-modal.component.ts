@@ -81,7 +81,6 @@ export class RefModalComponent implements OnInit {
     let pubDate: Date;
     if (site['accessDate']) accessDate = new Date(site['accessDate']);
     if (site['pubDate']) pubDate = new Date(site['pubDate']);
-    console.log('generateWebsite', site, accessDate, pubDate);
     return new FormGroup({
       url: new FormControl(site['url'] ||
        'https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy'),
@@ -159,7 +158,6 @@ export class RefModalComponent implements OnInit {
 
   buildJSON(formData) {
     // TODO make sure invalid authors value invalidates the form
-    console.log('buildJSON', formData);
     let author: Author;
     let data: any;
     switch (this.type) {
