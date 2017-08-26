@@ -119,7 +119,7 @@ export class RefModalComponent implements OnInit {
         reference['tags'].forEach(t => {
           if (t.tag !== '') tags += `${t.tag}, `;
         });
-        tags = tags.slice(-2); // remove final comma and space
+        tags = tags.substring(0, tags.length - 2); // remove final comma and space
       }
     }
     
