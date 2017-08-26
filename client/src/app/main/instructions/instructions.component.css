@@ -4,6 +4,17 @@
   text-align: center;
 }
 
+.instructions-main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.instructions-column {
+  flex: 1;
+}
+
 #hide-instructions {
   margin-bottom: 20px;
 }

@@ -1,56 +1,57 @@
 <div class="instructions">
   <button class="btn btn-info btn-sm" id="hide-instructions" (click)="toggleVisible()">{{ visible ? 'Close' : 'Need help?' }}</button>
-  <div *ngIf="visible" class="col-xs-12 panel panel-primary">    
-    <div class="row panel-heading">
+  <div *ngIf="visible" class="panel panel-primary">    
+    <div class="panel-heading">
       <h3 class="panel-title">How to use Referendus</h3>
     </div>
-    <div class="clearfix"></div>
-    <div class="panel panel-success col-md-4">
-      <div class="row panel-heading">
-        <h3 class="panel-title">Step 1: Create an account or sign in</h3>
-      </div>
-      <ol>
-        <li>Click the <mark>Account</mark> button in the upper right</li>
-        <li>Enter a username and password</li>
-        <li>To create an account, click <mark>Sign Up</mark> and it will create the account and sign you in automatically</li>
-        <li>Or, you can <mark>Sign In</mark> to the demo account with username <strong>demo</strong> and password <strong>demo</strong>.</li>
-      </ol>
-      <p><img src="https://res.cloudinary.com/dk85nueap/image/upload/v1503769650/Referendus_login_ekkk8h.png" alt="sign in example" /></p>
-    </div>
-    <div class="panel panel-warning col-md-4">
-        <div class="row panel-heading">
-          <h3 class="panel-title">Step 2: Enter or edit references</h3>
+    <div class="instructions-main">
+      <div class="panel panel-success instructions-column">
+        <div class="panel-heading">
+          <h3 class="panel-title">Step 1: Create an account or sign in</h3>
         </div>
-        <h4>To create a new reference:</h4>
         <ol>
-          <li>Click the <mark>New</mark> button at the top of the page</li>
-          <li>Choose Article, Book, or Website</li>
-          <li>Fill in the fields and click <mark>Add</mark>. Fields marked with * are required.</li>
+          <li>Click the <mark>Account</mark> button in the upper right</li>
+          <li>Enter a username and password</li>
+          <li>To create an account, click <mark>Sign Up</mark> and it will create the account and sign you in automatically</li>
+          <li>Or, you can <mark>Sign In</mark> to the demo account with username <strong>demo</strong> and password <strong>demo</strong>.</li>
         </ol>
-        <p><img src="https://res.cloudinary.com/dk85nueap/image/upload/c_scale,w_200/v1503769651/Referendus_Edit_t6powj.png" alt="add reference" /></p>
-        <h4>To edit existing references:</h4>
-        <ol>
-          <li>Click the <mark><i class="fa fa-pencil-square-o" aria-hidden="true"></i></mark> button</li>
-          <li>Change the desired fields</li>
-          <li>Click <mark>Save</mark>.</li>
-        </ol>
-        <h4>To delete a reference:</h4>
-        <ol>
-          <li>Click the <mark><i class="fa fa-trash-o" aria-hidden="true"></i></mark> button</li>
-          <li>Answer yes or no.</li>
-        </ol>
-    </div>
-    <div class="panel panel-info col-md-4">
-      <div class="row panel-heading">
-        <h3 class="panel-title">Step 3: Select a view and copy</h3>
+        <p><img src="https://res.cloudinary.com/dk85nueap/image/upload/v1503769650/Referendus_login_ekkk8h.png" alt="sign in example" /></p>
       </div>
-      <ol>
-        <li>Choose a format (APA, Chicago/Turabian, or MLA) from the dropdown above.</li>
-        <p><img src="https://res.cloudinary.com/dk85nueap/image/upload/v1503769650/Referendus_Format_pmiqda.png" alt="choose format" /></p>
-        <li>Choose a tab to display only references of that type, or All to display all references.</li>
-        <li>Then click <mark>Copy</mark> to copy the currently displayed references to the clipboard.</li>
-        <li>You can then paste into your favorite rich text editor, such as Word, Pages, Google Docs, etc.</li>
-      </ol>
+      <div class="panel panel-warning instructions-column">
+          <div class="panel-heading">
+            <h3 class="panel-title">Step 2: Enter or edit references</h3>
+          </div>
+          <h4>To create a new reference:</h4>
+          <ol>
+            <li>Click the <mark>New</mark> button at the top of the page</li>
+            <li>Choose Article, Book, or Website</li>
+            <li>Fill in the fields and click <mark>Add</mark>. Fields marked with * are required.</li>
+          </ol>
+          <p><img src="https://res.cloudinary.com/dk85nueap/image/upload/c_scale,w_200/v1503769651/Referendus_Edit_t6powj.png" alt="add reference" /></p>
+          <h4>To edit existing references:</h4>
+          <ol>
+            <li>Click the <mark><i class="fa fa-pencil-square-o" aria-hidden="true"></i></mark> button</li>
+            <li>Change the desired fields</li>
+            <li>Click <mark>Save</mark>.</li>
+          </ol>
+          <h4>To delete a reference:</h4>
+          <ol>
+            <li>Click the <mark><i class="fa fa-trash-o" aria-hidden="true"></i></mark> button</li>
+            <li>Answer yes or no.</li>
+          </ol>
+      </div>
+      <div class="panel panel-info instructions-column">
+        <div class="panel-heading">
+          <h3 class="panel-title">Step 3: Select a view and copy</h3>
+        </div>
+        <ol>
+          <li>Choose a format (APA, Chicago/Turabian, or MLA) from the dropdown above.</li>
+          <p><img src="https://res.cloudinary.com/dk85nueap/image/upload/v1503769650/Referendus_Format_pmiqda.png" alt="choose format" /></p>
+          <li>Choose a tab to display only references of that type, or All to display all references.</li>
+          <li>Then click <mark>Copy</mark> to copy the currently displayed references to the clipboard.</li>
+          <li>You can then paste into your favorite rich text editor, such as Word, Pages, Google Docs, etc.</li>
+        </ol>
+      </div>
     </div>
   </div>
 </div>
