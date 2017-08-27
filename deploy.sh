@@ -12,7 +12,7 @@ fi
 # Deploy docker image to Heroku
 
 # Install the toolbelt, and the required plugin.
-wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+# wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 heroku plugins:install heroku-container-registry
 docker login -u=$DOCKER_USERNAME -p=$HEROKU_API_KEY registry.heroku.com
 heroku container:push web --app referendus-angular
