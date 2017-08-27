@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm run build && npm run server",
     "server": "cd server && nodemon server.js",
-    "build": "cd client && ng build --prod",
+    "build": "cd client && npm install && ng build --prod",
     "dev": "concurrently \"npm run devbuild\" \"nodemon --inspect server/server.js\" ",
     "devbuild": "cd client && ng build --watch",
     "test": "jest --runInBand --forceExit",
