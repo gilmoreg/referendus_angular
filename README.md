@@ -11,6 +11,8 @@ by [Grayson Gilmore](http://gilmoreg.com).
 Referendus allows you to store academic references (either articles, books, or websites), choose which of the major citation formats you require, and copy them in rich text to the clipboard, ready to paste into your own work. The site also saves your choice of format for the next time you log in.
 Creating accounts and signing in and out is quick and easy.
 
+Note: for the original jQuery version of this app, see [here](https://github.com/gilmoreg/referendus).
+
 ## Technical
 * This is a full stack web app.
 * The server side uses Node, Express, MongoDB and Passport.
@@ -19,9 +21,8 @@ Creating accounts and signing in and out is quick and easy.
     * Passwords are encrypted with bcrypt.
     * The user's format choice is stored in LocalStorage.
 * The browser side uses [Angular 4](https://angular.io/) and [ngx-bootstrap](https://github.com/valor-software/ngx-bootstrap).
-* Additionally, the site uses:
-    * [Bootswatch Spacelab](https://bootswatch.com/spacelab/) as a theme.
-* Demo is hosted on [Amazon Lightsail](https://amazonlightsail.com/).
+* Additionally, the site uses [Bootswatch Spacelab](https://bootswatch.com/spacelab/) as a theme.
+* Demo is hosted on Heroku.
 
 ## Deployment
 * Follow instructions [here](https://medium.com/@sharmasha2nk/aws-lightsail-bitnami-nodejs-letsencrypt-cf653573b8a1) for AWS Lightsail deployment.
