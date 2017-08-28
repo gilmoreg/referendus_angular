@@ -25,7 +25,6 @@ Note: for the original jQuery version of this app, see [here](https://github.com
 * Demo is hosted on Heroku.
 
 ## Deployment
-* Follow instructions [here](https://medium.com/@sharmasha2nk/aws-lightsail-bitnami-nodejs-letsencrypt-cf653573b8a1) for AWS Lightsail deployment.
 * Set the following environment variables:
 ````
 DATABASE_URL=mongodb://<user>:<pass>@<url>:<port>/referendus
