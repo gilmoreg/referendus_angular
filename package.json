@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "preinstall": "npm install -g --quiet @angular/cli@latest",
-    "start": "npm run build && npm run server",
+    "start": "npm run server && npm run build",
     "server": "cd server && nodemon server.js",
     "build": "cd client && npm install && ng build --prod",
     "dev": "concurrently \"npm run devbuild\" \"nodemon --inspect server/server.js\" ",
