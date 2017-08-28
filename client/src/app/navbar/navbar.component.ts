@@ -19,6 +19,7 @@ export class NavbarComponent implements OnInit {
   activeTab$: Observable<any>;
   
   public modalRef: BsModalRef;
+  public copyAlert: any = {};
   private references;
   private activeTab;
 
@@ -71,6 +72,16 @@ export class NavbarComponent implements OnInit {
     sel.addRange(range);
   };
 
+  displayAlert(msg) {
+    this.copyAlert = {
+      type: 'warning',
+      msg,
+    }
+    setTimeout(() => {
+      this.copyAlert = {};
+    }, 3000);
+  }
+
   copy() {
     let collection = [];
     if (this.activeTab === 'all') collection = this.references;
@@ -90,8 +101,11 @@ export class NavbarComponent implements OnInit {
       document.body.appendChild(textarea);
       this.selectElementContents(textarea);
       try {
-        return document.execCommand('copy');  // Security exception may be thrown by some browsers.
+        document.execCommand('copy');  // Security exception may be thrown by some browsers.
+        this.displayAlert('Copied to clipboard!');
+        return true;
       } catch (ex) {
+        this.displayAlert('Error copying to clipboard.');
         console.warn('Copy to clipboard failed.', ex);
         return false;
       } finally {

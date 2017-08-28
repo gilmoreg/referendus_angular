@@ -8,7 +8,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
-import { DateValueAccessorModule } from 'angular-date-value-accessor';
+import { AlertModule } from 'ngx-bootstrap';
 
 // State Management
 import { StoreModule } from '@ngrx/store';
@@ -68,7 +68,7 @@ import { ReferenceLiComponent } from './main/reference-li/reference-li.component
     ModalModule.forRoot(),
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
-    DateValueAccessorModule,
+    AlertModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],
