@@ -169,8 +169,8 @@ export class RefModalComponent implements OnInit {
     data.tags = formData.tags.split(',').map(t => ({ tag: t.trim() }));
     data.notes = formData.notes;
     data.type = this.type;
-    if (data.accessDate) data.accessDate = data.accessDate.formatted;
-    if (data.pubDate) data.pubDate = data.pubDate.formatted;
+    if (formData.accessDate) data.accessDate = data.accessDate.formatted;
+    if (formData.pubDate) data.pubDate = data.pubDate.formatted;
     author = this.buildAuthor(data.author);
     if (author) return Object.assign({}, data, { authors: [{ author }] });
     return data;
